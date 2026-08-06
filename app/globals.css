@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  --base: #0b0d0f;
+  --raised: #141819;
+  --overlay: #1c2124;
+  --hairline: rgba(255, 255, 255, 0.07);
+  --text: #e4e8ea;
+  --muted: #7a838a;
+  --signal: #f0a028;
+  --resolved: #3e8c7f;
+
+  --copper: #c9793f;
+  --copper-light: #f2b46b;
+  --copper-dark: #6e3b1e;
+}
+
+@theme inline {
+  --color-base: var(--base);
+  --color-raised: var(--raised);
+  --color-overlay: var(--overlay);
+  --color-hairline: var(--hairline);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-signal: var(--signal);
+  --color-resolved: var(--resolved);
+  --color-copper: var(--copper);
+  --color-copper-light: var(--copper-light);
+  --color-copper-dark: var(--copper-dark);
+  --font-display: var(--font-archivo);
+  --font-body: var(--font-instrument);
+  --font-mono: var(--font-jbmono);
+}
+
+html {
+  background: var(--base);
+}
+
+body {
+  background: var(--base);
+  color: var(--text);
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.blueprint-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 42%, black 0%, transparent 75%);
+}
+
+@keyframes spin-cw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-ccw {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.gear-spin-cw {
+  animation: spin-cw linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.gear-spin-ccw {
+  animation: spin-ccw linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes marquee {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 32px 0;
+  }
+}
+
+.progress-marquee {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--signal) 0px,
+    var(--signal) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  animation: marquee 0.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gear-spin-cw,
+  .gear-spin-ccw,
+  .progress-marquee {
+    animation: none !important;
+  }
+}
