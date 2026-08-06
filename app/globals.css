@@ -7,12 +7,10 @@
   --hairline: rgba(255, 255, 255, 0.07);
   --text: #e4e8ea;
   --muted: #7a838a;
+  --dim: #5f686e;
+  --row: #b9c1c6;
   --signal: #f0a028;
   --resolved: #3e8c7f;
-
-  --copper: #c9793f;
-  --copper-light: #f2b46b;
-  --copper-dark: #6e3b1e;
 }
 
 @theme inline {
@@ -22,12 +20,11 @@
   --color-hairline: var(--hairline);
   --color-text: var(--text);
   --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-row: var(--row);
   --color-signal: var(--signal);
   --color-resolved: var(--resolved);
-  --color-copper: var(--copper);
-  --color-copper-light: var(--copper-light);
-  --color-copper-dark: var(--copper-dark);
-  --font-display: var(--font-archivo);
+  --font-display: var(--font-garamond);
   --font-body: var(--font-instrument);
   --font-mono: var(--font-jbmono);
 }
@@ -46,7 +43,7 @@ body {
   inset: 0;
   z-index: 40;
   pointer-events: none;
-  opacity: 0.05;
+  opacity: 0.045;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
@@ -57,66 +54,28 @@ body {
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(var(--hairline) 1px, transparent 1px),
-    linear-gradient(90deg, var(--hairline) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 42%, black 0%, transparent 75%);
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
-@keyframes spin-cw {
+@keyframes reveal {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(12px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes spin-ccw {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-.gear-spin-cw {
-  animation: spin-cw linear infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.gear-spin-ccw {
-  animation: spin-ccw linear infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-@keyframes marquee {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 32px 0;
-  }
-}
-
-.progress-marquee {
-  background-image: repeating-linear-gradient(
-    135deg,
-    var(--signal) 0px,
-    var(--signal) 8px,
-    transparent 8px,
-    transparent 16px
-  );
-  animation: marquee 0.8s linear infinite;
+.reveal {
+  animation: reveal 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gear-spin-cw,
-  .gear-spin-ccw,
-  .progress-marquee {
+  .reveal {
     animation: none !important;
   }
 }

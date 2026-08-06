@@ -143,7 +143,7 @@ The Ledger rail initializes here showing status `AVAILABLE` (make this a single 
 Copy direction — write from what a hiring manager needs to know, plainly:
 > Olayode Bolade Emmanuel
 > I build the internal tools operations teams actually work in — dashboards, role-based workflows, and the data pipelines behind them.
-> Four years shipping for healthcare, logistics, and NGO operators across Nigeria and the UK.
+> Five years shipping for healthcare, logistics, and NGO operators across Nigeria and the UK.
 
 **2. Selected work**
 Three case studies as ledger rows, not cards. Each row: record ID, client, one-line problem statement, stack chips, status chip, year. Rows expand on hover with a hairline highlight; click routes to the detail page.
@@ -343,3 +343,13 @@ Vercel Analytics only. No third-party trackers, no cookie banner needed.
 - [ ] Current resume PDF placed at `public/resume.pdf`
 - [ ] Decide the availability status shown in the Ledger rail
 - [ ] Confirm any NDA constraints on Twale / Next Digital Solutions
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
