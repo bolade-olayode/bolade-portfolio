@@ -1,0 +1,65 @@
+---
+id: ALB-2024-01
+slug: albis-care
+title: Rebuilding permissions and recovering a compromised care platform
+client: Albis Care
+clientAnonymized: false
+anonymizedAs: A UK domiciliary care provider
+role: Full-stack engineer
+period: 2024–present
+status: live
+stack: [WordPress, PHP, MySQL, React Native, Expo, RBAC]
+summary: A role hierarchy for staff, family and admin — then incident response after a spam campaign injected ~13,000 records into the database.
+facts:
+  - value: "~15"
+    label: Staff on platform
+  - value: "60+"
+    label: Care clients
+  - value: "~13,000"
+    label: Injected records cleared
+cover: /work/albis-care/cover.png
+featured: true
+order: 1
+---
+
+## Context
+
+Albis Care is a UK domiciliary care provider — carers visiting people in their own homes, on schedules that change daily. The platform running underneath that work had to serve three groups at once: office staff building and adjusting rotas, carers checking their visits and logging care notes in the field, and family members who wanted visibility into a relative's care without getting anywhere near the operational detail.
+
+The existing site was WordPress, chosen originally for speed of setup rather than fit. It had grown ad-hoc permission logic bolted onto page templates — workable while the team was small, not workable as staff, client, and family accounts all started hitting the same install with different expectations of what they should be able to see.
+
+## Constraints
+
+Small care providers run on thin margins and thinner engineering budgets. There was no appetite for a platform rewrite, and no tolerance for downtime — staff needed to keep logging visits every day, incident or no incident. Whatever I built had to sit on the existing WordPress/MySQL stack rather than replace it, and had to be maintainable by a non-technical office team afterward.
+
+The React Native/Expo companion app added a second constraint: any permission model had to hold consistently across both the web admin and the mobile client, not just one of them.
+
+## Decisions
+
+The core decision was building a real role hierarchy — staff, family, admin — rather than extending the page-by-page access checks already in place. That meant defining what each role could see and do at the data layer, not the template layer, so a family login and a staff login hitting the same record would get correctly scoped results without duplicating logic per view.
+
+The alternative — patching access checks per page as gaps surfaced — was the path already being used before I started, and it's the reason gaps kept surfacing. Rejecting it in favor of a structural fix cost more time upfront but meant a new page didn't need its own bespoke permission logic.
+
+TODO(content): specifics of the role-hierarchy implementation (plugin vs. custom code, capability mapping) pending write-up.
+
+## What I built
+
+A role-based access model spanning the WordPress admin and the companion app, so staff, family, and admin accounts each see only what their role defines — care notes and schedules for staff, a narrower read-only view for family, full administrative access for admin.
+
+TODO(content): architecture diagram and admin screenshots pending client sign-off.
+
+## Outcome
+
+As of August 2026, the platform runs scheduling and records for roughly 15 staff and 60+ care clients in production, with the role hierarchy in place across web and mobile.
+
+The incident side: a server-side compromise let a spam campaign inject roughly 13,000 casino-related posts into the database. Response was straightforward and unglamorous — identify and clean the injected records, rotate every credential the install touched, and harden the entry point that let it happen. All ~13,000 injected records were cleared.
+
+## What I'd do differently
+
+I'd put the role hierarchy in place before the platform had real data in it, not after. Retrofitting access control onto live staff and family accounts meant every change had to be checked against who was currently logged in and what they'd expect to still see — slower and more nerve-wracking than designing it in from day one.
+
+On the incident: the hardening that followed should have been baseline from the first deployment, not a response to a breach. A WordPress install handling care records for real people needed that posture from the start, not after 13,000 records proved the gap.
+
+---
+
+> **Open item:** this case study names the client. Publishing it in this form needs Albis Care's sign-off; declined, this reads as "a UK domiciliary care provider" instead with identifying detail stripped.

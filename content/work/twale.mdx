@@ -1,0 +1,58 @@
+---
+id: TWL-2025-01
+slug: twale
+title: Choosing the constraints for a motor-park logistics network
+client: Twale (Next Digital Solutions)
+clientAnonymized: false
+role: Full-stack engineer
+period: "2025"
+status: shipped
+stack: [Laravel, MySQL, Soketi, Cloudflare R2, PWA]
+summary: Digitising package delivery across Nigeria's inter-city motor parks — three decisions about what not to build.
+facts:
+  - value: "3"
+    label: Architecture decisions locked
+  - value: PWA
+    label: First — low-end Android
+cover: /work/twale/cover.png
+featured: true
+order: 2
+---
+
+## Context
+
+Twale (product name PAKEJ), built for Next Digital Solutions, digitises package delivery across Nigeria's inter-city motor parks — the informal but heavily-trafficked network of bus and transport hubs that already moves packages between cities, just without any digital record of where a package is or who's holding it at any given time.
+
+The people touching the system day to day are park agents handling packages in transit, not office staff on desktop machines. That shaped most of what follows.
+
+## Constraints
+
+The primary constraint was the device and network reality of the people using it: low-end Android phones, inconsistent connectivity between motor parks, and users who are moving packages, not sitting at a desk. A native app with a heavy install and update cycle doesn't fit that. Neither does a system that assumes reliable connectivity.
+
+The second constraint was the existing physical network itself — motor parks already relay goods between cities as a matter of course. The system had to work with that pattern, not replace it with a new logistics model the parks would have to adopt wholesale.
+
+## Decisions
+
+**Park-to-park relay over door-to-door.** Door-to-door delivery means owning or contracting last-mile logistics in every city the network touches — a much larger operational lift than the parks already handle. Park-to-park relay uses the handoff pattern that already exists: a package moves park to park and is collected at the destination park, same as it would informally, just tracked. Door-to-door is the more complete product; it was rejected because it requires infrastructure the business didn't have and couldn't build fast enough to matter.
+
+**QR and tracking-code scanning over OTP.** OTP delivery confirmation depends on SMS reliability and the recipient having signal at the right moment — a bad bet in markets with patchy coverage. A scannable code on the package itself works offline at the point of handoff and doesn't depend on the recipient's network at all. OTP is the more familiar pattern from courier apps; it was rejected because it introduces a failure mode (no SMS, no delivery confirmation) that scanning doesn't have.
+
+**GPS deferred to a later phase.** Live GPS tracking is the feature everyone expects from a logistics app, and it was the one most tempting to build first. It was deferred because park-to-park relay doesn't need continuous location data to function — a package's state is defined by which park last scanned it, not by where it is between parks. Building GPS tracking into v1 would have spent effort on a feature the relay model doesn't depend on, ahead of shipping the core handoff flow at all.
+
+## What I built
+
+A PWA-first logistics platform on a Laravel backend, so onboarding a park agent means opening a URL, not installing and updating a native app on a low-end device. MySQL holds operational data with a separate PII vault for sensitive customer information, Soketi handles real-time websocket updates between parks, and Cloudflare R2 stores package media.
+
+TODO(content): architecture diagram and product screenshots pending.
+
+## Outcome
+
+TODO(content): usage metrics pending — not fabricating a number here. The three architecture decisions above shipped as designed: park-to-park relay, code scanning instead of OTP, and GPS held back from v1.
+
+## What I'd do differently
+
+I'd push harder, earlier, on defining exactly what "delivered" means in a relay model where no single party owns the package end to end — that definition touches the data model, the notification logic, and the dispute-resolution story, and getting it slightly wrong early costs more to unwind later than it would have cost to get right up front.
+
+---
+
+> **Open item:** confirm NDA constraints with Next Digital Solutions before this goes live in this level of detail.

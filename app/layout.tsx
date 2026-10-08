@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { EB_Garamond, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Archivo, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const ebGaramond = EB_Garamond({
-  variable: "--font-garamond",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["500", "600"],
 });
 
 const instrument = Instrument_Sans({
@@ -13,25 +13,25 @@ const instrument = Instrument_Sans({
   subsets: ["latin"],
 });
 
-const jbmono = JetBrains_Mono({
-  variable: "--font-jbmono",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Olayode Bolade Emmanuel — Full-Stack Engineer",
+  title: "Olayode Bolade Emmanuel — Full-stack engineer",
   description:
-    "Full-stack engineer building internal tools, data workflows, and SaaS platforms. Site under construction.",
+    "Full-stack engineer — internal tools, data workflows, and SaaS platforms.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${ebGaramond.variable} ${instrument.variable} ${jbmono.variable} h-full antialiased`}
+      className={`${archivo.variable} ${instrument.variable} ${plexMono.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-base text-text font-[family-name:var(--font-body)]">
+      <body className="bg-paper text-ink font-[family-name:var(--font-body)] text-[15px] leading-[1.65]">
         {children}
       </body>
     </html>

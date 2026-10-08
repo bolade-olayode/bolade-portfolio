@@ -1,0 +1,52 @@
+---
+id: FBC-2025-01
+slug: foodbank-crm
+title: "Scrapping my own backend: why FoodBank CRM left Dolibarr"
+client: FoodBank CRM
+clientAnonymized: false
+role: Full-stack engineer
+period: 2025–present
+status: ongoing
+stack: [Laravel, Next.js, MySQL, Dolibarr, Docker]
+summary: A multi-role NGO platform built on Dolibarr ERP, run in production, then rebuilt on Laravel after the ERP stopped fitting the requirements.
+facts:
+  - value: "3"
+    label: Role types
+  - value: Rebuilt
+    label: Backend, in production
+cover: /work/foodbank-crm/cover.png
+featured: true
+order: 3
+---
+
+## Context
+
+FoodBank CRM is a multi-role NGO platform: vendors manage inventory, beneficiaries hold and spend credits, there's a subscription layer, and a redemption flow ties the two sides together. Three distinct roles, each needing a different shape of access to the same underlying ledger of who has what and who redeemed what.
+
+## Constraints
+
+The platform needed to exist quickly and cheaply at the start — an NGO budget, a need to get something real in front of vendors and beneficiaries rather than spend a long runway on custom backend architecture. That constraint is what led to the first decision below.
+
+## Decisions
+
+**Dolibarr ERP, chosen first.** Dolibarr is a mature open-source ERP with inventory, invoicing, and subscription modules already built. For a platform that needed vendor inventory and beneficiary subscriptions fast, extending an existing ERP looked like the obviously correct call — it meant not rebuilding double-entry inventory logic and subscription billing from zero.
+
+It broke against the shape of the real requirements. Dolibarr's data model is built around conventional commerce — vendors selling to customers — not around a beneficiary-credit-and-redemption system where the "customer" doesn't pay cash and the thing being tracked is an entitlement, not a transaction. Every deviation from that assumption meant fighting the ERP's model instead of using it, and the fighting compounded as the redemption and credits logic grew more specific to how the foodbank actually operates.
+
+**The rebuild: Laravel backend, Next.js frontend.** Once the ERP's assumptions were actively working against the product, I rebuilt the backend from scratch on Laravel — a data model designed around credits and redemption rather than invoices and payments — with a Next.js frontend. This was not a gradual migration; the Dolibarr backend was in production and got scrapped.
+
+## What I built
+
+A Laravel backend modeling vendor inventory, beneficiary credits, subscriptions, and redemption as first-class concepts rather than adaptations of commerce objects, with a Next.js frontend for the three role types to operate against.
+
+TODO(content): architecture diagram and screenshots pending.
+
+## Outcome
+
+The rebuilt platform is running in production, covering the three role types (vendor, beneficiary, admin) across inventory, credits, subscriptions, and redemption.
+
+TODO(content): usage metrics beyond role count pending — not fabricating a number here.
+
+## What I'd do differently
+
+I'd have spent more time up front establishing whether the core object in the system was a transaction or an entitlement, before picking a platform built around the former. Dolibarr wasn't a bad tool — it was the wrong model for what this specific platform needed to represent, and that mismatch doesn't show up in a feature checklist. It shows up months in, once the edge cases around credits and redemption stop fitting cleanly into invoice-shaped tables. Publicly reversing that decision cost real rebuild time; it was still cheaper than continuing to force the data to fit.
