@@ -5,6 +5,7 @@ export const site = {
     // Availability changes quickly. Enable only after confirming your current status.
     available: false,
     resume: '/bolade-olayode-resume.pdf',
+    strava: 'https://strava.app.link/ttkKXZMSm7b',
     socials: [
         { label: 'GitHub', href: 'https://github.com/bolade-olayode/' },
         { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bolade-olayode/' },
@@ -24,7 +25,7 @@ export const projects: Record<string, {
     githubUrl?: string;
 }> = {
     'albis-care': { name: 'Albis Care', category: 'Healthcare · Web & mobile', headline: 'Permissions for care staff, admins, and families.', decision: 'A shared permission model across the web platform and mobile companion, rather than access checks scattered through individual screens.', scope: 'Full-stack engineering · Permissions · Mobile companion', nodes: ['Office & admin', 'Role-based access', 'Care teams & families'], tone: 'care' },
-    twale: { name: 'Twale / PAKEJ', category: 'Logistics · SaaS platform', headline: 'Tracking packages between motor parks.', decision: 'Park-to-park relay and code scanning; live GPS deferred so the core handoff workflow could ship first.', scope: 'Full-stack engineering · Architecture · PWA', nodes: ['Park agents · PWA', 'Laravel · Soketi', 'MySQL · PII vault · R2'], tone: 'logistics' },
+    twale: { name: 'Twale / PAKEJ', category: 'Logistics · Web & mobile platform', headline: 'Every delivery has a trail. Every handoff has proof.', decision: 'A shared delivery history connects role-based applications, background GPS tracking, verified handoffs, and payment outcomes.', scope: 'Backend architecture · Web applications · Mobile development', nodes: ['Merchants · Drivers · Operations', 'Laravel API · Access control', 'Delivery events · Payments · PII vault'], tone: 'logistics' },
     'foodbank-crm': { name: 'FoodBank CRM', category: 'NGO operations · Internal platform', headline: 'Moving beneficiary credits off an ERP.', decision: 'Replaced Dolibarr with a purpose-built Laravel backend when beneficiary credits and redemption outgrew the ERP’s commerce assumptions.', scope: 'Full-stack engineering · Data modeling · Backend rebuild', nodes: ['Vendors · Beneficiaries', 'Credits & redemption', 'Laravel · MySQL'], tone: 'foodbank' },
 };
 export const expertise = [
@@ -38,7 +39,7 @@ export const expertise = [
 export const principles = [
     { title: 'Start with the workflow.', text: 'I want to know who uses the system, what they need to get done, and where the current process gets in their way.' },
     { title: 'Get the data model right.', text: 'FoodBank taught me how expensive the wrong model can become. I spend more time on the core records and rules before building around them.' },
-    { title: 'Decide what can wait.', text: 'On Twale, we deferred GPS to focus on package handoffs. I try to make those tradeoffs explicit early in a project.' },
+    { title: 'Plan for the interrupted workflow.', text: 'On Twale, drivers move between apps and lose signal. I build around those interruptions, with background tracking and local storage for location points and supported actions.' },
 ];
 export const experience = [
     { period: '2022 — present', title: 'Freelance full-stack engineer', org: 'Remote', detail: 'Business tools across healthcare, logistics, commerce, and SaaS.' },
@@ -52,16 +53,19 @@ export const testimonials: {
     role: string;
 }[] = [];
 
-// Draft cards only. Replace with owner-supplied names, descriptions, and store URLs.
+// Owner-supplied app identities and icons. Add store entries when URLs are confirmed.
 export const apps: {
     id: string;
     name: string;
     description: string;
     mark: string;
+    icon?: string;
     tone: string;
+    status?: 'Internal testing' | 'Coming soon';
     stores: { label: string; url?: string }[];
 }[] = [
-    { id: 'app-1', name: 'App one', description: 'Space for the app’s purpose and my contribution.', mark: '01', tone: 'app-cobalt', stores: [{ label: 'App Store' }, { label: 'Google Play' }] },
-    { id: 'app-2', name: 'App two', description: 'Space for the app’s purpose and my contribution.', mark: '02', tone: 'app-sage', stores: [{ label: 'Google Play' }] },
-    { id: 'app-3', name: 'App three', description: 'Space for the app’s purpose and my contribution.', mark: '03', tone: 'app-clay', stores: [{ label: 'App Store' }] },
+    { id: 'albis-care', name: 'Albis Care', description: 'Care-management mobile companion.', mark: 'AC', icon: '/albiscare-favicon.png', tone: 'app-icon-contained', stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=uk.co.albiscare.app&pcampaignid=web_share' }] },
+    { id: 'foodbank-crm', name: 'FoodBank CRM', description: 'Mobile app for FoodBank CRM.', mark: 'FB', icon: '/foodbankcrm-icon.png', tone: 'app-icon-original', stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=foodbankcrm.app&pcampaignid=web_share' }] },
+    { id: 'meetpie', name: 'Meetpie', description: 'Meetpie mobile app.', mark: 'M', icon: '/meetpie-favicon.png', tone: 'app-icon-original', status: 'Internal testing', stores: [] },
+    { id: 'twale', name: 'Twale', description: 'Twale mobile applications.', mark: 'T', icon: '/twale-favicon.png', tone: 'app-icon-original', status: 'Coming soon', stores: [] },
 ];

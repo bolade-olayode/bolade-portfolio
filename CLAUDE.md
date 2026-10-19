@@ -85,3 +85,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+
+## Latest owner-approved presentation
+
+Homepage features Twale, FoodBank CRM, and Albis Care in that order, with detail pages at `/work/<slug>`. Use `lib/platforms.ts` and `components/site/PlatformProjects.tsx` for active platform content. Legacy MDX is preserved as historical context and is not rendered. The full `/portfolio` page includes platforms, all websites, and an AI/automation placeholder. Keep the original image-left/text-right row design. Dashboard derivatives are in `public/work/platforms/`; private originals stay in git-ignored `private-assets/`. Screenshots begin static and scroll on hover/focus or explicit play; honor reduced motion. Missing screens and outcomes must remain labeled placeholders until supplied.

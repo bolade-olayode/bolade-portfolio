@@ -1,4 +1,4 @@
 import type { MetadataRoute } from 'next';
-import { getAllWork } from '@/lib/content';
 import { site } from '@/lib/site';
-export default function sitemap(): MetadataRoute.Sitemap { return [{ url: site.url, priority: 1 }, ...getAllWork().map(w => ({ url: `${site.url}/work/${w.frontmatter.slug}`, priority: 0.8 }))]; }
+import { platformProjects } from '@/lib/platforms';
+export default function sitemap(): MetadataRoute.Sitemap { return [{ url: site.url, priority: 1 }, { url: `${site.url}/portfolio`, priority: 0.8 }, ...platformProjects.map(project => ({ url: `${site.url}/work/${project.slug}`, priority: 0.8 }))]; }

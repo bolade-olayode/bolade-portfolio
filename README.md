@@ -11,6 +11,14 @@ npm run dev
 
 Open http://localhost:3000. Production: `npm run build` then `npm start`.
 
+## Featured platforms and portfolio
+
+The homepage features Twale, FoodBank CRM, and Albis Care in that order, followed by Aura by Nimi as a website project. `lib/platforms.ts` owns their summaries, screenshots, workflow notes, placeholders, and detail-page content. Platform rows link to `/work/<slug>`; Aura by Nimi links to its live store. The “View full portfolio” link leads to `/portfolio`, with platforms, all seven websites, and a clearly labeled AI/automation placeholder.
+
+Website names, overviews, images, and live URLs live in `lib/portfolio.ts`. Each preview uses a separate static `coverImage` where supplied, then reveals its long screenshot on image hover or keyboard focus. Leaving the preview restores the cover and resets scrolling. The “Play scrolling previews” checkbox also works on touch devices. Reduced-motion preferences stop animation. Website previews link directly to the live sites; platform previews link to detail pages.
+
+Reviewed redacted dashboard derivatives live in `public/work/platforms/`. Unredacted originals are preserved in git-ignored `private-assets/dashboard-originals/` and must stay outside `public`. FoodBank’s dashboard and additional mobile screens are labeled placeholders until supplied. The legacy MDX narratives remain historical sources; the active platform pages use `lib/platforms.ts` and exclude outdated incident details and unconfirmed metrics.
+
 ## Edit content
 
 | Content | Location |
@@ -21,24 +29,25 @@ Open http://localhost:3000. Production: `npm run build` then `npm start`.
 | App cards and optional App Store / Google Play URLs | `lib/site.ts` → `apps` |
 | Expertise, philosophy, experience | `lib/site.ts` → respective arrays |
 | Approved recommendations | `lib/site.ts` → `testimonials`; empty means no section |
-| Case-study metadata and prose | `content/work/*.mdx` |
+| Featured platform metadata and detail-page copy | `lib/platforms.ts` |
+| Legacy case-study source material | `content/work/*.mdx` |
 | Hero and about editorial copy | `app/page.tsx` |
 | Design tokens, responsive layouts, interaction styles | `app/globals.css` |
 | Portrait and résumé | `public/portrait.png`, `public/bolade-olayode-resume.pdf` |
 
-To add a project, copy an MDX file, use a unique slug and record ID, set `order`, and add a matching entry in `projects` in `lib/site.ts`. Follow Problem → Constraints → Engineering decisions → Implementation → Results → Lessons. Only claim verified outcomes. `order` determines display order.
+To add a featured platform, add an entry to `platformProjects` in `lib/platforms.ts`. Array order controls the homepage, portfolio, and next-project navigation. Add website-only projects to `portfolioSites` in `lib/portfolio.ts`.
 
 ### Replace visual placeholders
 
-The project visuals are **explicitly labeled simplified architecture diagrams**, based on existing write-ups. They are not product screenshots. To replace one, put an approved screenshot in `public/work/<slug>/`, then set `screenshot: '/work/<slug>/screen.webp'` and an accurate `screenshotAlt` on its entry in `lib/site.ts`. The image uses Next.js image optimization. Use a suitably cropped 4:3 image; never include private customer data.
+Add approved, redacted screenshots under `public/work/platforms/`, then set the platform’s `screenshot`, `screenshotAlt`, and `screenshotCaption`. A missing screenshot renders a labeled placeholder. Describe only confirmed workflows, contributions, and outcomes. Mobile and additional product screens can be added to the detail-page gallery as they become available.
 
-Add `liveUrl` or `githubUrl` only when public access is permitted. Missing links are omitted. Replace all `TODO(content)` paragraphs with actual project details before release. No fabricated testimonials or placeholder performance statistics are used.
-
-App cards currently use explicitly labeled placeholders. Replace each entry in `apps` with the real name, description, and store URLs. Missing URLs display “Link pending” without a clickable destination.
+The compact app shelf in `components/site/AppShelf.tsx` currently uses explicitly labeled placeholders. Set each app’s optional `icon` in `lib/site.ts` to an approved icon asset. Replace each entry in `apps` with the real name, description, and store URLs. Missing URLs display “Link pending” without a clickable destination.
 
 ### Publication gates
 
-Albis Care's incident narrative requires client approval. Twale details require NDA review. The current case studies retain clearly visible notes about these requirements. If anonymizing, update **all** content and configuration, not only `clientAnonymized`. Confirm profile links and PDF contents. The deployed domain is configured in `site.url`; update it if needed before publishing.
+Client clearance is still required before publication; Twale details require NDA review. The historical Albis incident narrative is not rendered by the active pages. If anonymizing, update titles, summaries, bodies, metadata, and visuals throughout. Confirm profile links and PDF contents. The deployed domain is configured in `site.url`; update it if needed before publishing.
+
+The homepage automation diagram is an illustrative concept in `components/site/AutomationFlow.tsx`, not a completed project. Replace its generic content with owner-supplied project and tool details when available.
 
 ## Design and checks
 

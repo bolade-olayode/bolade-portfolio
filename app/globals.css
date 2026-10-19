@@ -12,6 +12,8 @@
   --accent-soft:#e9ecfb;
   --dark:#202820;
   --white:#fff;
+  --grid-line:rgba(34,37,34,.045);
+  --grid-size:56px;
   --ochre:var(--accent);
   --ochre-bright:var(--accent);
   --ochre-wash:var(--accent-soft);
@@ -41,6 +43,11 @@ html {
 body {
   margin:0;
   background:var(--paper);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size:var(--grid-size) var(--grid-size);
+  background-position:center top;
   color:var(--ink);
   font-family:var(--font-body),sans-serif;
   font-size:16px;
@@ -1551,11 +1558,11 @@ a:hover .arrow {
 }
 
 /* Hero and app shelf — October copy/layout revision. */
-.hero-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 72px; align-items: center; margin-top: 36px; }
+.hero-grid { grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; align-items: center; margin-top: 36px; }
 .hero-copy { grid-column: auto; padding-block: 20px; }
-.hero-intro { font-size: 20px; margin-bottom: 20px; }
-.hero h1 { font-size: clamp(46px, 5.1vw, 72px); max-width: 760px; line-height: 1.08; }
-.hero-description { max-width: 510px; }
+.hero-intro { font-family: var(--font-garamond), Georgia, serif; font-size: 26px; margin-bottom: 20px; }
+.hero h1 { font-size: 96px; font-weight: 800; max-width: none; line-height: 1.02; letter-spacing: -.06em; }
+.hero-description { font-family: var(--font-garamond), Georgia, serif; font-size: 23px; line-height: 1.5; max-width: 510px; }
 .hero-aside { grid-column: auto; padding: 0; width: 100%; max-width: 380px; justify-self: end; }
 .portrait-frame { transform: none; border-radius: 8px; background: #e5e6de; }
 .portrait-frame img { filter: none; }
@@ -1579,23 +1586,305 @@ a:hover .arrow {
 .store-pending { color: var(--muted); background: var(--paper-2); }
 .store-pending small { font-size: 10px; }
 @media (max-width: 1100px) {
-  .hero-grid { gap: 40px; }
-  .hero h1 { font-size: 56px; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+  .hero h1 { font-size: 68px; }
   .app-card { padding: 22px; }
 }
 @media (max-width: 800px) {
   .hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 28px; }
-  .hero h1 { font-size: 46px; }
+  .hero h1 { font-size: 54px; }
   .portrait-caption { flex-direction: column; gap: 2px; }
   .apps-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .hero-grid { display: flex; gap: 28px; }
   .hero-copy { padding-block: 0; }
-  .hero-intro { font-size: 18px; margin-bottom: 14px; }
-  .hero h1 { font-size: clamp(36px, 8.8vw, 52px); }
+  .hero-intro { font-size: 23px; margin-bottom: 14px; }
+  .hero-description { font-size: 21px; }
+  .hero h1 { font-size: clamp(40px, 10vw, 60px); }
   .hero-aside { display: block; max-width: 280px; align-self: center; }
   .portrait-frame { max-width: none; }
   .portrait-caption { flex-direction: row; }
   .hero-bottom { margin-top: 30px; }
 }
+
+/* Shared typography for buttons and text actions. */
+button,
+.button,
+.nav-cta,
+.text-link,
+.resume-link,
+.project-links > a,
+.work-note > a,
+.social-links > a,
+.store-links > a,
+.store-pending,
+.case-footer > a,
+.hero-bottom > a,
+.site-footer > a:last-child {
+  font-family: var(--font-garamond), Georgia, serif;
+  font-size: 16px;
+}
+.store-pending small { font-size: 14px; }
+
+/* Full-page website previews. */
+.hero { padding-bottom: 36px; }
+.website-gallery { min-width: 0; }
+.preview-control { display: flex; gap: 10px; align-items: center; width: fit-content; margin-bottom: 24px; color: var(--ink-2); font-size: 14px; min-height: 44px; cursor: pointer; }
+.preview-control input { width: 18px; height: 18px; accent-color: var(--accent); }
+.preview-control input:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.website-screen { aspect-ratio: 4 / 3; overflow: hidden; }
+.website-capture { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; animation: website-scroll 24s ease-in-out 0s infinite alternate; animation-play-state: paused; }
+.website-gallery:has(.preview-control input:checked) .website-capture { animation-play-state: running; }
+.portfolio-page h1 { font-size: clamp(40px, 5vw, 68px); line-height: 1.1; }
+@keyframes website-scroll { 0%, 10% { object-position: center top; } 90%, 100% { object-position: center bottom; } }
+
+/* Retain the original project rows: preview left, brief copy right. */
+.website-project-visual .website-screen { border: 1px solid var(--rule); border-radius: 5px; max-width: 425px; margin-inline: auto; transform: rotate(-2deg); background: white; }
+.website-tone-aura-by-nimi, .website-tone-tishow-beauty-spa { background: #eee8dd; }
+.website-tone-five-star-trucking, .website-tone-northwest-cdl { background: #e7eaf0; }
+.website-project:focus-within .website-capture { animation-play-state: running; }
+@media (hover: hover) {
+  .website-project:hover .website-capture { animation-play-state: running; }
+}
+.website-visit { display: inline-block; margin-top: 20px; }
+
+/* Featured platforms and project detail pages. */
+.platform-tone-twale { background: #e7eaf0; }
+.platform-tone-foodbank-crm { background: #eee8dd; }
+.platform-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; min-height: 280px; padding: 40px 28px; border: 1px dashed #adb3a6; border-radius: 5px; text-align: center; background: var(--paper-2); color: var(--ink-2); }
+.platform-placeholder p { max-width: 380px; font-family: var(--font-garamond), Georgia, serif; font-size: 24px; line-height: 1.4; }
+.platform-placeholder .eyebrow { color: var(--muted); }
+.platform-placeholder-full { min-height: 440px; }
+.project-visual .platform-placeholder { min-height: 0; aspect-ratio: 4 / 3; }
+.portfolio-more { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--rule); padding-top: 28px; }
+.portfolio-more p { color: var(--muted); font-size: 14px; }
+.portfolio-jumps { display: flex; flex-wrap: wrap; gap: 12px 30px; padding-bottom: 40px; margin-bottom: 45px; border-bottom: 1px solid var(--rule); }
+.portfolio-jumps a { font-family: var(--font-garamond), Georgia, serif; font-size: 22px; padding-block: 8px; }
+.portfolio-jumps a:hover { color: var(--accent); }
+.portfolio-section { padding-top: 100px; }
+.platform-lead-figure { margin: 48px 0 0; }
+.platform-detail-screen { padding: 28px; border: 1px solid var(--rule); border-radius: 6px; background: var(--paper-2); }
+.platform-full-image { display: block; width: 100%; height: auto; border-radius: 4px; }
+.platform-lead-figure figcaption { margin-top: 14px; font-size: 12px; color: var(--muted); }
+.platform-story { display: grid; grid-template-columns: 1fr 2fr; gap: 70px; padding-block: 65px; border-bottom: 1px solid var(--rule); }
+.platform-story > .eyebrow { color: var(--accent); margin-top: 8px; }
+.platform-story h2 { font-size: clamp(30px, 3vw, 40px); }
+.platform-story p:not(.eyebrow) { font-size: 17px; color: var(--ink-2); line-height: 1.85; margin-top: 22px; max-width: 750px; }
+.platform-workflows { padding-block: 65px; border-bottom: 1px solid var(--rule); }
+.platform-workflow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+.platform-workflow-grid article { border-top: 1px solid var(--rule); padding-top: 20px; }
+.platform-workflow-grid article > span { color: var(--accent); }
+.platform-workflow-grid h3 { font-size: 22px; margin-block: 16px 12px; }
+.platform-workflow-grid p { font-size: 15px; color: var(--ink-2); line-height: 1.8; }
+.platform-extra { padding-block: 65px; }
+.platform-extra h2 { margin-block: 18px 35px; }
+.platform-pending { padding: 32px; background: var(--accent-soft); border-radius: 5px; }
+.platform-pending h2 { font-size: 28px; margin-top: 12px; }
+.platform-pending ul { padding-left: 20px; margin-bottom: 0; color: var(--ink-2); }
+.platform-pending li { margin-top: 8px; }
+@media (max-width: 800px) {
+  .platform-story { gap: 30px; grid-template-columns: 1fr; }
+  .platform-workflow-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 600px) {
+  .portfolio-more { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .platform-lead-figure { margin-top: 30px; }
+  .platform-detail-screen { padding: 10px; }
+  .platform-story, .platform-workflows, .platform-extra { padding-block: 42px; }
+  .platform-placeholder-full { min-height: 280px; }
+  .platform-pending { padding: 24px; }
+  .portfolio-section { padding-top: 70px; }
+}
+
+/* Static cover first; the full screenshot is revealed only for an active preview. */
+.scroll-preview { position: relative; background: var(--white); }
+.preview-cover, .preview-long { display: block; width: 100%; height: 100%; object-position: center top; }
+.preview-cover { object-fit: contain; }
+.preview-long { position: absolute; inset: 0; object-fit: cover; opacity: 0; pointer-events: none; }
+.project-visual:focus-visible .has-scroll-image .preview-cover,
+.website-gallery:has(.preview-control input:checked) .has-scroll-image .preview-cover { opacity: 0; }
+.project-visual:focus-visible .preview-long,
+.website-gallery:has(.preview-control input:checked) .preview-long { opacity: 1; animation: website-scroll 24s ease-in-out infinite alternate; }
+@media (hover: hover) {
+  .project-visual:hover .has-scroll-image .preview-cover { opacity: 0; }
+  .project-visual:hover .preview-long { opacity: 1; animation: website-scroll 24s ease-in-out infinite alternate; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-preview .preview-cover { opacity: 1 !important; }
+  .scroll-preview .preview-long { opacity: 0 !important; animation: none !important; }
+}
+
+.preview-cover.preview-cover-crop { object-fit: cover; }
+
+/* Let each cover set the frame height; hover imagery overlays the same frame. */
+.scroll-preview { aspect-ratio: auto; }
+.scroll-preview .preview-cover { width: 100%; height: auto; }
+
+/* A gentler tilt on the outer frame than on the preview inside it. */
+.website-project-visual { transform: rotate(-0.6deg); }
+
+/* Platform narrative: delivery journey, responsibilities, and engineering detail. */
+.platform-stage-label { display: inline-block; margin-top: 22px; padding: 7px 12px; background: var(--accent-soft); border-radius: 4px; color: var(--accent); font-size: 12px; }
+.delivery-journey { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; list-style: none; margin: 0; padding: 0; }
+.delivery-journey li { border-top: 2px solid var(--accent); padding-top: 18px; }
+.delivery-journey .eyebrow { color: var(--accent); }
+.delivery-journey h3 { font-size: 21px; line-height: 1.3; margin-block: 16px 12px; }
+.delivery-journey p { color: var(--ink-2); font-size: 15px; line-height: 1.8; }
+.platform-workflow-grid.four-workflows { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.platform-decisions { padding-top: 65px; }
+.platform-decisions .section-heading { margin-bottom: 0; }
+.platform-decisions .platform-story h3 { font-size: clamp(24px, 2.8vw, 34px); line-height: 1.25; letter-spacing: -.035em; }
+.platform-technology { padding-block: 65px; border-bottom: 1px solid var(--rule); }
+.platform-technology h2 { margin-top: 18px; }
+.platform-technology .stack-list { margin-top: 26px; }
+.platform-technology .stack-list li { font-size: 12px; padding: 6px 10px; }
+@media (max-width: 800px) {
+  .delivery-journey { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .delivery-journey, .platform-workflow-grid.four-workflows { grid-template-columns: 1fr; }
+  .platform-decisions { padding-top: 42px; }
+  .platform-technology { padding-block: 42px; }
+}
+
+/* Compact app shelf, inspired by the supplied icon-row reference. */
+.app-shelf-heading h2 { font-size: 30px; letter-spacing: -.035em; margin-top: 14px; }
+.app-shelf-heading > p:last-child { font-size: 14px; color: var(--muted); margin-top: 14px; }
+.app-shelf { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px; list-style: none; margin: 32px 0 0; padding: 0; }
+.app-shelf-item { width: 128px; text-align: center; }
+.app-shelf-icon { display: grid; place-items: center; width: 88px; height: 88px; margin: auto; border: 1px solid var(--rule); border-radius: 22px; font-family: var(--font-garamond), Georgia, serif; font-size: 34px; box-shadow: 0 2px 3px rgb(34 37 34 / 4%); overflow: hidden; }
+.app-shelf-icon img { width: 100%; height: 100%; object-fit: cover; }
+.app-icon-link { display: block; border-radius: 22px; width: fit-content; margin-inline: auto; }
+.app-icon-link:hover .app-shelf-icon { border-color: var(--accent); }
+.app-shelf-item h3 { font-family: var(--font-body), sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-top: 16px; }
+.app-draft-label { font-family: var(--font-mono), monospace; font-size: 9px; color: var(--muted); }
+.app-shelf-stores { display: flex; flex-direction: column; gap: 5px; margin-top: 12px; }
+.app-shelf-stores > span { font-size: 10px; color: var(--muted); }
+.app-shelf-stores > a { font-family: var(--font-garamond), Georgia, serif; font-size: 16px; padding-block: 4px; }
+.app-shelf-stores > a:hover { color: var(--accent); }
+
+/* Illustrative automation map; tool names await the owner's project details. */
+.automation-section { border-top: 1px solid var(--rule); }
+.automation-heading { text-align: center; max-width: 740px; margin-inline: auto; }
+.automation-heading .eyebrow { color: var(--accent); margin-bottom: 22px; }
+.automation-heading h2 span { color: var(--accent); }
+.automation-heading > p:last-child { font-family: var(--font-garamond), Georgia, serif; font-size: 23px; line-height: 1.5; color: var(--ink-2); max-width: 610px; margin: 24px auto 0; }
+.automation-concepts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 35px 60px; max-width: 770px; margin: 48px auto 0; }
+.automation-concepts > div { display: flex; align-items: flex-start; gap: 16px; }
+.concept-icon { flex: 0 0 30px; color: var(--accent); padding-top: 3px; }
+.automation-concepts h3 { font-size: 17px; letter-spacing: -.02em; }
+.automation-concepts p { font-size: 13px; color: var(--ink-2); line-height: 1.8; margin-top: 9px; }
+.automation-figure { max-width: 960px; margin: 50px auto 0; }
+.automation-map { position: relative; height: 420px; }
+.automation-connections { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.automation-connections line { stroke: var(--rule); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.automation-connections .flow-signal { stroke: var(--accent); stroke-opacity: .55; stroke-dasharray: 3 28; animation: workflow-signal 8s linear infinite; }
+.flow-node, .flow-hub { position: absolute; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+.flow-node { top: var(--node-y); left: var(--node-x); transform: translate(-50%, -26px); width: 132px; }
+.flow-node > span { display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid var(--rule); border-radius: 14px; background: var(--paper); }
+.flow-node strong { font-family: var(--font-mono), monospace; font-size: 10px; font-weight: 400; color: var(--ink-2); }
+.flow-cobalt > span { color: var(--accent); background: var(--accent-soft); }
+.flow-sage > span { color: #3b5037; background: #e4e9df; }
+.flow-clay > span { color: #77533d; background: #eee3d9; }
+.flow-hub { top: 50%; left: 50%; transform: translate(-50%, -36px); width: 170px; }
+.flow-hub > span { display: grid; place-items: center; width: 72px; height: 72px; border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); background: var(--paper); box-shadow: 0 0 0 8px var(--accent-soft); }
+.flow-hub svg { width: 32px; height: 32px; }
+.flow-hub strong { font-size: 12px; font-weight: 500; background: var(--paper); padding-inline: 8px; }
+.automation-figure figcaption { text-align: center; font-family: var(--font-mono), monospace; font-size: 9px; color: var(--muted); letter-spacing: .06em; }
+.automation-more { margin-top: 30px; text-align: center; }
+@keyframes workflow-signal { to { stroke-dashoffset: -248; } }
+@media (max-width: 600px) {
+  .app-shelf { gap: 28px 12px; }
+  .app-shelf-item { width: calc((100% - 24px) / 3); }
+  .app-shelf-icon { width: 72px; height: 72px; border-radius: 18px; }
+  .app-shelf-heading h2 { font-size: 28px; }
+  .automation-concepts { grid-template-columns: 1fr; gap: 26px; margin-top: 35px; }
+  .automation-heading > p:last-child { font-size: 21px; }
+  .automation-map { height: 320px; }
+  .flow-node { width: 88px; transform: translate(-50%, -22px); }
+  .flow-node > span { width: 44px; height: 44px; border-radius: 12px; }
+  .flow-node strong { font-size: 9px; }
+  .flow-hub { width: 130px; transform: translate(-50%, -30px); }
+  .flow-hub > span { width: 60px; height: 60px; border-radius: 16px; }
+  .flow-hub strong { font-size: 11px; }
+  .automation-figure figcaption { font-size: 8px; line-height: 1.8; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .automation-connections .flow-signal { animation: none; }
+}
+
+/* App icons on the left, an introduction on the right. */
+.app-shelf-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; align-items: center; }
+.app-shelf-copy > p:first-child { font-family: var(--font-garamond), Georgia, serif; font-size: 26px; line-height: 1.5; max-width: 480px; }
+.app-shelf-copy > p + p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-top: 20px; max-width: 440px; }
+@media (max-width: 1100px) { .app-shelf-layout { gap: 40px; } }
+@media (max-width: 800px) { .app-shelf-layout { grid-template-columns: 1fr; gap: 36px; } }
+
+/* Real app icons and a shorter app section. */
+.apps-section.section { padding-block: 56px; }
+.app-shelf { margin-top: 24px; }
+.app-shelf-heading h2 { margin-top: 10px; }
+.app-icon-original, .app-icon-contained { background: var(--white); }
+.app-icon-contained img { object-fit: contain; padding: 10px; }
+@media (max-width: 600px) {
+  .apps-section.section { padding-block: 40px; }
+}
+
+/* Keep all four apps in one compact row on desktop. */
+.app-shelf { gap: 24px 16px; }
+.app-shelf-item { width: 112px; }
+.app-shelf-stores .app-status { display: inline-block; align-self: center; border: 1px solid var(--rule); border-radius: 4px; padding: 3px 7px; font-size: 10px; }
+@media (min-width: 801px) {
+  .app-shelf-layout { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 48px; }
+  .app-shelf-item { width: calc((100% - 48px) / 4); }
+  .app-shelf-stores > a { font-size: 16px; }
+}
+@media (min-width: 801px) and (max-width: 1000px) {
+  .app-shelf-icon { width: 68px; height: 68px; border-radius: 17px; }
+}
+@media (max-width: 600px) {
+  .app-shelf-item { width: calc((100% - 16px) / 2); }
+}
+
+/* Full-width section bands retain the shared content alignment. */
+:root {
+  --section-work: #eeede8;
+  --section-apps: #f8f7f3;
+  --section-automation: #edf0fa;
+  --section-expertise: #f0ede6;
+  --section-about: #eaf0e9;
+}
+.homepage .work-section { background: var(--section-work); border-block: 1px solid var(--rule); }
+.homepage .apps-section { background: var(--section-apps); border-top: 0; }
+.homepage .automation-section { background: var(--section-automation); border-block: 1px solid #dce1ef; }
+.homepage .expertise-section { background: var(--section-expertise); border-top: 0; }
+.homepage .philosophy-section { border-bottom: 1px solid var(--rule); }
+.homepage .about-section { background: var(--section-about); border-top: 0; }
+.homepage .automation-section .flow-hub > span,
+.homepage .automation-section .flow-hub strong { background: var(--section-automation); }
+
+/* Carry the grid across every section while retaining each background color. */
+.homepage > section {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: center top;
+}
+.homepage > .contact-section {
+  --grid-line: rgba(248, 247, 243, .055);
+}
+
+/* The runner behind the engineering work. */
+.about-running-photo { max-width: 340px; margin: 28px 0 0; }
+.about-running-photo img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 5px; }
+.about-running-photo figcaption { margin-top: 13px; font-family: var(--font-mono), monospace; font-size: 9px; line-height: 1.8; letter-spacing: .05em; color: var(--muted); }
+.about-running { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.about-running > p { line-height: 1.85; }
+.strava-link { display: inline-block; margin-top: 14px; color: var(--accent); }
+@media (max-width: 600px) {
+  .about-running-photo { max-width: 300px; }
+}
+
+.about-heading > .about-running-photo:first-child { margin-top: 0; }
