@@ -6,7 +6,7 @@ export function Arrow() {
 export function Navigation() {
     return <header className="site-header"><div className="container nav-inner">
     <Link href="/" className="wordmark" aria-label={`${site.name}, home`}>bolade<span>.</span></Link>
-    <nav aria-label="Main navigation"><Link href="/portfolio">Portfolio</Link><Link href="/#apps">Apps</Link><Link href="/#about">About</Link><Link href="/#contact" className="nav-contact">Contact</Link></nav>
+    <nav aria-label="Main navigation"><Link href="/portfolio">Portfolio</Link><Link href="/#about">About</Link><Link href="/#contact" className="nav-contact">Contact</Link></nav>
     <a className="nav-cta" href={`mailto:${site.email}`}>Let’s talk <Arrow /></a>
   </div></header>;
 }

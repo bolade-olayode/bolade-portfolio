@@ -30,8 +30,8 @@ export const projects: Record<string, {
 };
 export const expertise = [
     { title: 'Frontend engineering', detail: 'Dashboards, forms, and responsive interfaces for day-to-day work.', tech: 'React · Next.js · TypeScript · Tailwind CSS' },
-    { title: 'Backend & APIs', detail: 'APIs, access control, and the business logic behind an application.', tech: 'Laravel · PHP · REST APIs · WebSockets' },
-    { title: 'Data & systems design', detail: 'Database models for operational records, beneficiary credits, and customer data.', tech: 'MySQL · SQL · Data pipelines · Python' },
+    { title: 'Backend & APIs', detail: 'APIs, access control, business logic, and custom PHP plugins for WordPress projects.', tech: 'Laravel · PHP · REST APIs · WebSockets' },
+    { title: 'Data & automation', detail: 'Document pipelines, Claude-powered job and finance tools, and legal knowledge retrieval with a vector database.', tech: 'MySQL · Python · Google Apps Script · Claude / OpenAI APIs · RAG' },
     { title: 'Deployment & operations', detail: 'Deploying applications, working with existing infrastructure, and maintaining them after launch.', tech: 'Docker · Cloudflare R2 · Vercel · WordPress' },
     { title: 'Mobile & cross-platform', detail: 'Mobile companion apps and PWAs, including work for low-end Android devices.', tech: 'React Native · Expo · Progressive web apps' },
     { title: 'Security & reliability', detail: 'Role-based permissions, credential rotation, and separating sensitive customer data.', tech: 'RBAC · PII separation · Incident recovery' },

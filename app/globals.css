@@ -1888,3 +1888,69 @@ button,
 }
 
 .about-heading > .about-running-photo:first-child { margin-top: 0; }
+
+/* The shared app shelf keeps its full-width surface on the portfolio page. */
+.portfolio-page > .apps-section {
+  background-color: var(--section-apps);
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: center top;
+  border-block: 1px solid var(--rule);
+}
+
+/* Project evidence for AI, automation, and private client plugin work. */
+.automation-concepts h3 a { display: inline-block; }
+.automation-concepts h3 a:hover { color: var(--accent); }
+.automation-concepts h3 .arrow { font-size: 14px; margin-left: 4px; }
+.automation-projects { border-top: 1px solid var(--rule); }
+.automation-project { padding-block: 42px; border-bottom: 1px solid var(--rule); }
+.automation-project-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 24px; }
+.automation-project-top .eyebrow { color: var(--accent); }
+.automation-project-status { font-family: var(--font-mono), monospace; font-size: 10px; color: var(--muted); border: 1px solid var(--rule); border-radius: 4px; padding: 5px 9px; }
+.automation-project-body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 72px; align-items: start; }
+.automation-project h3 { font-size: 31px; letter-spacing: -.035em; line-height: 1.2; }
+.automation-project-summary { color: var(--ink-2); font-size: 16px; line-height: 1.85; margin-top: 18px; }
+.automation-project-decision { border-left: 2px solid var(--accent); padding-left: 18px; margin-top: 24px; }
+.automation-project-decision h4 { font-family: var(--font-mono), monospace; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; margin: 0 0 9px; }
+.automation-project-decision p { color: var(--ink-2); font-size: 14px; line-height: 1.85; }
+.automation-project .stack-list { margin-block: 24px; }
+.automation-project .stack-list li, .custom-plugin-panel .stack-list li { font-size: 10px; padding: 4px 8px; }
+.automation-project .text-link { display: inline-block; }
+.automation-project-evidence { background: var(--paper-2); border: 1px solid var(--rule); border-radius: 6px; padding: 30px; }
+.automation-result { border-bottom: 1px solid var(--rule); padding-bottom: 24px; margin-bottom: 24px; }
+.automation-result strong { font-family: var(--font-display), sans-serif; font-size: 62px; font-weight: 500; letter-spacing: -.06em; line-height: 1; color: var(--accent); }
+.automation-result p { font-size: 14px; color: var(--ink-2); line-height: 1.6; max-width: 240px; margin-top: 12px; }
+.automation-pipeline { list-style: none; margin: 20px 0 0; padding: 0; }
+.automation-pipeline li { position: relative; font-family: var(--font-garamond), Georgia, serif; font-size: 21px; line-height: 1.4; padding: 0 0 24px 22px; border-left: 1px solid #bdc6e0; }
+.automation-pipeline li::before { content: ''; position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); left: -4px; top: 9px; }
+.automation-pipeline li:last-child { border-color: transparent; padding-bottom: 0; }
+.custom-plugin-panel { display: grid; grid-template-columns: 1fr 2fr; gap: 65px; border: 1px solid var(--rule); border-radius: 6px; padding: 45px; background: var(--accent-soft); }
+.plugin-count { display: flex; flex-direction: column; gap: 18px; }
+.plugin-count strong { font-family: var(--font-display), sans-serif; font-size: 92px; line-height: 1; letter-spacing: -.06em; color: var(--accent); }
+.plugin-count span { font-family: var(--font-mono), monospace; font-size: 9px; letter-spacing: .06em; color: var(--muted); }
+.custom-plugin-panel h2 { font-size: 35px; margin-top: 16px; }
+.custom-plugin-panel p:not(.eyebrow) { color: var(--ink-2); font-size: 16px; line-height: 1.85; margin-top: 22px; }
+@media (max-width: 800px) {
+  .automation-project-body { grid-template-columns: 1fr; gap: 30px; }
+  .custom-plugin-panel { grid-template-columns: 1fr; gap: 30px; padding: 30px; }
+}
+@media (max-width: 600px) {
+  .automation-project { padding-block: 32px; }
+  .automation-project h3 { font-size: 27px; }
+  .automation-project-evidence { padding: 24px; }
+  .automation-project-status { font-size: 9px; }
+  .custom-plugin-panel { padding: 24px; }
+  .custom-plugin-panel h2 { font-size: 30px; }
+}
+
+.plugin-projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; margin-top: 36px; }
+.plugin-project { min-width: 0; border-top: 1px solid var(--rule); padding-top: 28px; }
+.plugin-project > .eyebrow { color: var(--accent); }
+.plugin-project h3 { font-size: 26px; line-height: 1.25; letter-spacing: -.03em; margin-top: 15px; }
+.plugin-project-summary { font-size: 15px; line-height: 1.85; color: var(--ink-2); margin-top: 16px; }
+.plugin-project .stack-list { margin-block: 24px; }
+.plugin-project .stack-list li { font-size: 10px; }
+.plugin-project > .text-link { display: inline-block; }
+@media (max-width: 800px) { .plugin-projects { grid-template-columns: 1fr; } }

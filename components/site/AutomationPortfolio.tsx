@@ -1,0 +1,16 @@
+import { automationProjects, customPlugins, pluginProjects } from '@/lib/automations';
+import { Arrow } from './Chrome';
+
+export function AutomationPortfolio() {
+    return <>
+        <section id="automations" className="portfolio-section" aria-labelledby="automation-portfolio-title">
+            <div className="section-heading"><div><p className="eyebrow">AI & AUTOMATIONS</p><h2 id="automation-portfolio-title">Tools that do the repeat work.</h2></div><p>Document publishing, job discovery, finance tracking, and a browser automation experiment.</p></div>
+            <div className="automation-projects">{automationProjects.map((project, index) => <article id={project.slug} className="automation-project" key={project.slug}>
+                <div className="automation-project-top"><p className="eyebrow">0{index + 1} / {project.category}</p><span className="automation-project-status">{project.status}</span></div>
+                <div className="automation-project-body"><div><h3>{project.name}</h3><p className="automation-project-summary">{project.summary}</p><div className="automation-project-decision"><h4>The engineering choice</h4><p>{project.decision}</p></div><ul className="stack-list" aria-label={`${project.name} technologies`}>{project.technologies.map(tech => <li key={tech}>{tech}</li>)}</ul>{project.repository && <a className="text-link" href={project.repository.url} target="_blank" rel="noopener noreferrer">{project.repository.label} <Arrow /><span className="sr-only"> (opens in a new tab)</span></a>}</div>
+                <div className="automation-project-evidence">{project.metric && <div className="automation-result"><strong>{project.metric.value}</strong><p>{project.metric.label}</p></div>}<p className="eyebrow">WORKFLOW OVERVIEW</p><ol className="automation-pipeline">{project.workflow.map(step => <li key={step}>{step}</li>)}</ol></div></div>
+            </article>)}</div>
+        </section>
+        <section id="plugins" className="portfolio-section" aria-labelledby="plugins-title"><div className="custom-plugin-panel"><div className="plugin-count"><strong>{customPlugins.count.toString().padStart(2, '0')}</strong><span>CLIENT-SPECIFIC PLUGINS</span></div><div><p className="eyebrow">WORDPRESS DEVELOPMENT</p><h2 id="plugins-title">{customPlugins.title}</h2><p>{customPlugins.summary}</p><ul className="stack-list" aria-label="Plugin technologies">{customPlugins.technologies.map(tech => <li key={tech}>{tech}</li>)}</ul></div></div><div className="plugin-projects">{pluginProjects.map(project => <article id={project.slug} className="plugin-project" key={project.slug}><p className="eyebrow">CUSTOM PLUGIN</p><h3>{project.name}</h3><p className="plugin-project-summary">{project.summary}</p><div className="automation-project-decision"><h4>What I built</h4><p>{project.implementation}</p></div><ul className="stack-list" aria-label={`${project.name} technologies`}>{project.technologies.map(tech => <li key={tech}>{tech}</li>)}</ul>{project.repository && <a className="text-link" href={project.repository.url} target="_blank" rel="noopener noreferrer">{project.repository.label} <Arrow /><span className="sr-only"> (opens in a new tab)</span></a>}</article>)}</div></section>
+    </>;
+}
