@@ -22,7 +22,7 @@ featured: true
 order: 1
 ---
 
-## Context
+## Problem
 
 Albis Care is a UK domiciliary care provider — carers visiting people in their own homes, on schedules that change daily. The platform running underneath that work had to serve three groups at once: office staff building and adjusting rotas, carers checking their visits and logging care notes in the field, and family members who wanted visibility into a relative's care without getting anywhere near the operational detail.
 
@@ -34,7 +34,7 @@ Small care providers run on thin margins and thinner engineering budgets. There 
 
 The React Native/Expo companion app added a second constraint: any permission model had to hold consistently across both the web admin and the mobile client, not just one of them.
 
-## Decisions
+## Engineering decisions
 
 The core decision was building a real role hierarchy — staff, family, admin — rather than extending the page-by-page access checks already in place. That meant defining what each role could see and do at the data layer, not the template layer, so a family login and a staff login hitting the same record would get correctly scoped results without duplicating logic per view.
 
@@ -42,19 +42,19 @@ The alternative — patching access checks per page as gaps surfaced — was the
 
 TODO(content): specifics of the role-hierarchy implementation (plugin vs. custom code, capability mapping) pending write-up.
 
-## What I built
+## Implementation
 
 A role-based access model spanning the WordPress admin and the companion app, so staff, family, and admin accounts each see only what their role defines — care notes and schedules for staff, a narrower read-only view for family, full administrative access for admin.
 
 TODO(content): architecture diagram and admin screenshots pending client sign-off.
 
-## Outcome
+## Results
 
 As of August 2026, the platform runs scheduling and records for roughly 15 staff and 60+ care clients in production, with the role hierarchy in place across web and mobile.
 
 The incident side: a server-side compromise let a spam campaign inject roughly 13,000 casino-related posts into the database. Response was straightforward and unglamorous — identify and clean the injected records, rotate every credential the install touched, and harden the entry point that let it happen. All ~13,000 injected records were cleared.
 
-## What I'd do differently
+## Lessons
 
 I'd put the role hierarchy in place before the platform had real data in it, not after. Retrofitting access control onto live staff and family accounts meant every change had to be checked against who was currently logged in and what they'd expect to still see — slower and more nerve-wracking than designing it in from day one.
 

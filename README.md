@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bolade Olayode — engineering portfolio
 
-## Getting Started
+A responsive, server-rendered portfolio built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, and local MDX case studies. The current visual direction is ivory, charcoal, and cobalt, with editorial project stories and an authentic portrait.
 
-First, run the development server:
+## Run locally
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Production: `npm run build` then `npm start`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Edit content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Content | Location |
+| --- | --- |
+| Identity, email, socials, résumé, canonical domain | `lib/site.ts` → `site` |
+| Availability indicator | `lib/site.ts` → `site.available` (false until confirmed) |
+| Project names, categories, decision summaries, diagrams, optional live/repository links | `lib/site.ts` → `projects` |
+| App cards and optional App Store / Google Play URLs | `lib/site.ts` → `apps` |
+| Expertise, philosophy, experience | `lib/site.ts` → respective arrays |
+| Approved recommendations | `lib/site.ts` → `testimonials`; empty means no section |
+| Case-study metadata and prose | `content/work/*.mdx` |
+| Hero and about editorial copy | `app/page.tsx` |
+| Design tokens, responsive layouts, interaction styles | `app/globals.css` |
+| Portrait and résumé | `public/portrait.png`, `public/bolade-olayode-resume.pdf` |
 
-## Learn More
+To add a project, copy an MDX file, use a unique slug and record ID, set `order`, and add a matching entry in `projects` in `lib/site.ts`. Follow Problem → Constraints → Engineering decisions → Implementation → Results → Lessons. Only claim verified outcomes. `order` determines display order.
 
-To learn more about Next.js, take a look at the following resources:
+### Replace visual placeholders
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project visuals are **explicitly labeled simplified architecture diagrams**, based on existing write-ups. They are not product screenshots. To replace one, put an approved screenshot in `public/work/<slug>/`, then set `screenshot: '/work/<slug>/screen.webp'` and an accurate `screenshotAlt` on its entry in `lib/site.ts`. The image uses Next.js image optimization. Use a suitably cropped 4:3 image; never include private customer data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Add `liveUrl` or `githubUrl` only when public access is permitted. Missing links are omitted. Replace all `TODO(content)` paragraphs with actual project details before release. No fabricated testimonials or placeholder performance statistics are used.
 
-## Deploy on Vercel
+App cards currently use explicitly labeled placeholders. Replace each entry in `apps` with the real name, description, and store URLs. Missing URLs display “Link pending” without a clickable destination.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Publication gates
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Albis Care's incident narrative requires client approval. Twale details require NDA review. The current case studies retain clearly visible notes about these requirements. If anonymizing, update **all** content and configuration, not only `clientAnonymized`. Confirm profile links and PDF contents. The deployed domain is configured in `site.url`; update it if needed before publishing.
+
+## Design and checks
+
+See `CLAUDE.md` for the current design system. The historical `portfolio-mockup.html` and old rail/archive/app components are retained as references; the live pages use `components/site/`.
+
+```sh
+npm run lint
+npx tsc --noEmit --incremental false
+npm run build
+```
+
+### Final release checklist
+
+- [ ] **Accessibility:** keyboard navigation, skip link, visible focus, screen-reader reading order, 200–400% zoom, 320px viewport, touch targets, and reduced-motion preference checked in a browser.
+- [ ] **Performance:** mobile Lighthouse on production; measure LCP, CLS, and INP. Target 95+ Lighthouse where achievable; scores have not been certified.
+- [ ] **Content:** client permissions, factual claims, portrait, résumé, links, current availability, and screenshots confirmed; TODOs resolved.
+- [ ] **Conversion:** email CTAs open the correct mailbox, résumé loads, social profiles resolve, project routes work, no dead-end product links.
+- [ ] **SEO:** deployed canonical domain, sitemap, robots, generated OG image, and structured data checked.
+
+No analytics, contact-form backend, new packages, or external hosting changes are introduced. Direct email handles enquiries.
