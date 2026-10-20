@@ -25,21 +25,28 @@ export const projects: Record<string, {
     githubUrl?: string;
 }> = {
     'albis-care': { name: 'Albis Care', category: 'Healthcare · Web & mobile', headline: 'Permissions for care staff, admins, and families.', decision: 'A shared permission model across the web platform and mobile companion, rather than access checks scattered through individual screens.', scope: 'Full-stack engineering · Permissions · Mobile companion', nodes: ['Office & admin', 'Role-based access', 'Care teams & families'], tone: 'care' },
-    twale: { name: 'Twale / PAKEJ', category: 'Logistics · Web & mobile platform', headline: 'Every delivery has a trail. Every handoff has proof.', decision: 'A shared delivery history connects role-based applications, background GPS tracking, verified handoffs, and payment outcomes.', scope: 'Backend architecture · Web applications · Mobile development', nodes: ['Merchants · Drivers · Operations', 'Laravel API · Access control', 'Delivery events · Payments · PII vault'], tone: 'logistics' },
-    'foodbank-crm': { name: 'FoodBank CRM', category: 'NGO operations · Internal platform', headline: 'Moving beneficiary credits off an ERP.', decision: 'Replaced Dolibarr with a purpose-built Laravel backend when beneficiary credits and redemption outgrew the ERP’s commerce assumptions.', scope: 'Full-stack engineering · Data modeling · Backend rebuild', nodes: ['Vendors · Beneficiaries', 'Credits & redemption', 'Laravel · MySQL'], tone: 'foodbank' },
+    twale: { name: 'Twale', category: 'Logistics · Web & mobile platform', headline: 'Delivery management across web and mobile.', decision: 'A shared backend connects merchant and operations web applications with mobile apps for users and drivers.', scope: 'Backend architecture · Web applications · Mobile development', nodes: ['Merchants · Drivers · Operations', 'Shared backend · Access control', 'Web · User app · Driver app'], tone: 'logistics' },
+    'foodbank-crm': { name: 'FoodBank CRM', category: 'Food distribution · Web & mobile platform', headline: 'Connecting food subscriptions, vendors, and orders.', decision: 'Built a shared Laravel API for web and mobile, with separate role permissions and server-verified payments.', scope: 'Backend architecture · Web application · Mobile development', nodes: ['Members · Vendors · Admin', 'Subscriptions & orders', 'Laravel · Next.js · React Native'], tone: 'foodbank' },
 };
 export const expertise = [
-    { title: 'Frontend engineering', detail: 'Dashboards, forms, and responsive interfaces for day-to-day work.', tech: 'React · Next.js · TypeScript · Tailwind CSS' },
-    { title: 'Backend & APIs', detail: 'APIs, access control, business logic, and custom PHP plugins for WordPress projects.', tech: 'Laravel · PHP · REST APIs · WebSockets' },
-    { title: 'Data & automation', detail: 'Document pipelines, Claude-powered job and finance tools, and legal knowledge retrieval with a vector database.', tech: 'MySQL · Python · Google Apps Script · Claude / OpenAI APIs · RAG' },
-    { title: 'Deployment & operations', detail: 'Deploying applications, working with existing infrastructure, and maintaining them after launch.', tech: 'Docker · Cloudflare R2 · Vercel · WordPress' },
-    { title: 'Mobile & cross-platform', detail: 'Mobile companion apps and PWAs, including work for low-end Android devices.', tech: 'React Native · Expo · Progressive web apps' },
-    { title: 'Security & reliability', detail: 'Role-based permissions, credential rotation, and separating sensitive customer data.', tech: 'RBAC · PII separation · Incident recovery' },
+    { title: 'Full-stack engineering', detail: 'Interfaces, APIs, permissions, and payment flows connected into complete applications.' },
+    { title: 'Web & mobile platforms', detail: 'Browser and native apps for merchants, drivers, care teams, and the people running the operation.' },
+    { title: 'Systems & infrastructure', detail: 'Data models, authentication, event histories, deployment, and integrations that keep applications working together.' },
+    { title: 'AI & automation', detail: 'Document processing, rules-based workflows, Claude and OpenAI integrations, and knowledge-base retrieval.' },
 ];
+
+// Technologies demonstrated in the owner's project briefs and reviewed sources.
+export const engineeringTechnologies = [
+    'TypeScript', 'JavaScript', 'Python', 'PHP', 'React', 'Next.js',
+    'React Native / Expo', 'Node.js', 'Laravel', 'MySQL', 'Docker',
+    'WordPress', 'Google Apps Script', 'REST APIs', 'AI / LLM APIs',
+];
+
 export const principles = [
-    { title: 'Start with the workflow.', text: 'I want to know who uses the system, what they need to get done, and where the current process gets in their way.' },
-    { title: 'Get the data model right.', text: 'FoodBank taught me how expensive the wrong model can become. I spend more time on the core records and rules before building around them.' },
-    { title: 'Plan for the interrupted workflow.', text: 'On Twale, drivers move between apps and lose signal. I build around those interruptions, with background tracking and local storage for location points and supported actions.' },
+    { title: 'Understand before building.', text: 'I start with the people using the product, what they need to get done, and where the current workflow breaks down.' },
+    { title: 'Choose an architecture that fits.', text: 'FoodBank taught me to question the underlying data model, not just compare feature lists. The architecture needs to fit the work it supports.' },
+    { title: 'Plan for interruptions.', text: 'Twale’s drivers switch apps and lose signal. Background tracking and local storage for location points and supported actions account for those interruptions.' },
+    { title: 'Follow through after launch.', text: 'Testing, deployment, maintenance, and feedback are part of the work. I stay involved in how the software runs and what needs to improve.' },
 ];
 export const experience = [
     { period: '2022 — present', title: 'Freelance full-stack engineer', org: 'Remote', detail: 'Business tools across healthcare, logistics, commerce, and SaaS.' },

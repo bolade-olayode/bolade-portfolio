@@ -27,7 +27,7 @@ Keep the coming-soon production site unchanged. Do not merge into production, pu
 
 ## Evidence and placeholders
 
-Real project narratives: Albis Care, Twale/PAKEJ, FoodBank CRM. Existing owner-provided claims have not been independently verified.
+Real project narratives: Albis Care, Twale, FoodBank CRM. Existing owner-provided claims have not been independently verified.
 
 Architecture diagrams are explicitly labeled simplified illustrations, not screenshots. Add approved screenshots using each project's `screenshot` and `screenshotAlt` in `lib/site.ts`; see README. Optional live/repository links render only when supplied. Testimonials are empty and omitted; availability is false pending confirmation.
 
@@ -104,3 +104,57 @@ Homepage sections now use full-width muted background bands: selected projects w
 About section now includes owner-supplied `public/running-bolade.PNG` beneath the heading, preserving its proportions, plus the approved personal paragraph stating ultrarunning and three completed marathons. “Follow my runs on Strava” links to the owner-supplied URL in `site.strava`, opening in a new tab. These are owner-provided biographical claims; no additional race results or distances were inferred.
 
 Removed Apps from the shared top navigation at owner request. The same AppShelf component remains on the homepage and now also appears on `/portfolio` between platforms and websites. Portfolio layout uses full-width section bands with inner containers, avoiding nested container widths so the app shelf matches homepage dimensions, copy, real icons, statuses, and Play Store links. Portfolio app band retains the ivory/grid styling.
+
+
+## AI / automation and custom plugin portfolio — latest content
+
+Owner supplied four automation projects and custom PHP plugins. Read-only review of sibling local repos `job-agent`, `Finance-tracker`, and `AI-Agent` informed summaries; no API calls, tool executions, installs, private data reads, or changes to those repos. Public legal-publishing repository README reviewed: https://github.com/bolade-olayode/automated-case-reporting-system . It contains Apps Script; Python processing stage and python-docx/PyPDF2 plus 80% manual-processing reduction are owner-supplied, not independently benchmarked. Link is labeled “View publishing script”.
+
+Active content is in `lib/automations.ts`. Portfolio `AutomationPortfolio.tsx` lists legal document pipeline, job search agent (pre-filtering, Claude scoring, SQLite, review UI), finance tracker (Telegram, deterministic arithmetic, Claude interpretation/classification, SQLite and optional Sheets sync implementation), and sports betting agent (Chrome extension/WebSocket/Claude; checked-in paper-mode default, no profitability/deployment claims). Finance README is older than source: actual bot wires SQLite and Sheets sync, so descriptions follow source rather than claiming mock-only status.
+
+Owner described custom plugins: Legal Digital NG chat UI with RAG/vector retrieval and OpenAI GPT-4 fallback when no suitable match; year/first-letter custom post taxonomies used in a case dashboard; WooCommerce pending bank-transfer orders, receipt upload, admin notification, and manual confirmation. These examples are shown under `/portfolio#plugins`, with explicit distinction between upload and payment confirmation. Taxonomy source URL supplied and linked: https://github.com/bolade-olayode/WordPress-custom-taxonomy (browsing fetch unavailable). No vector database vendor or unspecified plugin capabilities invented.
+
+Homepage highlights legal pipeline, job agent, finance tracker, and legal AI assistant, linking to portfolio anchors. The diagram now shows Python, Claude API, OpenAI API, Apps Script, WordPress, and Telegram, explicitly labeled as tools across separate projects. About and expertise mention automation and custom PHP plugins. Existing platform/app layouts retained. Validation: lint, TypeScript, whitespace checks, and webpack production build passed. Browser visual/device QA remains pending.
+
+Owner requests no explicit plugin totals in any copy. Removed the numeric portfolio badge, count field, and counted wording from About, plugin descriptions, and documentation. Refer to “custom WordPress plugins” without specifying a total.
+
+
+## Merged engineering section — owner approved
+
+Replaced the homepage's separate automation and “Where I can help” sections with `EngineeringSection.tsx` after apps. Heading: “Different challenges. One engineering mindset.” Four pillars in `lib/site.ts` cover full-stack engineering, web/mobile, systems/infrastructure, and AI/automation. `engineeringTechnologies` lists only confirmed project technologies; Flutter/PostgreSQL omitted. Compact full-stack hub diagram connects frontend, backend APIs, mobile, cloud/operations, databases, integrations, and AI/automation, with a simplified-diagram caption. At <=800px it becomes a readable grouped grid. Selected engineering solutions below retain the legal pipeline (owner-supplied 80% result), job agent, finance tracker, and legal AI assistant. No explicit plugin totals. `#expertise` identifies the section, `#automations` remains on the selected-solutions area for old anchors. Existing blue band/grid background retained. Old AutomationFlow is unused reference code. Portfolio project narratives are unchanged.
+
+
+## Five-photo About stack and viewer
+
+Owner requested overlapping photos with click-to-open, then explicitly chose five photos by restoring the golden-hour running image. `AboutPhotoStack.tsx` is the small client component; `lib/about-photos.ts` holds selection/order/alt text/dimensions. Current selection: existing race-day photo, IMG_0696 everyday portrait, _MG_0974 group photo, IMG_2045 medal photo, and Golden Hour Urban Runner training portrait. Optimized derivatives in `public/about/` preserve original uploads and total about 1.15MB. Main race card is central, everyday/medal cards behind, group below-left, training below-right. Reduced tilt on mobile; original photo captions remain omitted, About heading/text/Strava remain.
+
+Full-size viewer uses native dialog, uncropped images, previous/next buttons and arrow keys, Escape, explicit Tab/Shift+Tab wrap, close button/backdrop, focus return, and body scroll locking. Read-only headless Chrome QA script and screenshots are under `/tmp/bolade-photo-qa.mjs` and `/tmp/bolade-photos-*.png`, not project dependencies. Browser checks passed desktop and 390px/320px: all five photos have visible click/tap targets, navigation/wraparound, Escape/close, focus return/containment, body scroll restoration, no horizontal overflow, and reduced-motion transitions off. This is targeted gallery QA, not a full-site accessibility audit.
+
+
+## FoodBank CRM — current owner brief and product screenshots
+
+Replaced active FoodBank credits/ERP copy with the owner's production food distribution brief: subscriptions, approved vendor catalogue, orders, earnings/withdrawals, and admin oversight. Homepage and portfolio use the supplied admin home screenshot with its actual aspect ratio; details include six additional member/vendor/admin screenshots, labeled and linked to full-size originals. Screens show sample/empty states; no usage metrics inferred. Regional configuration is distinguished from active geographic operations. Owner-supplied production status and engineering details have not been independently audited.
+
+Detail page covers end-to-end ownership, three roles, web/mobile sharing a versioned Laravel API, Sanctum and role middleware, HMAC-verified Paystack webhooks, queued Resend/Expo notifications, Cloudinary, and supplied stack/hosting. Architecture distinguishes two app types from three roles rather than repeating the supplied ambiguous client count. Mobile screenshots remain pending. Historical MDX is unchanged. Shared screenshot gallery and architecture fields are optional, preserving the other project pages.
+
+Owner then supplied two mobile sign-in screenshots (member and vendor). Added them below the web gallery in a narrower, natural-proportion mobile subsection; removed FoodBank's mobile placeholder and empty pending notes. Both screenshots open full size.
+
+
+## Twale — latest architecture and delivery status
+
+Owner supplied a replacement overview, architecture, privacy, payments, and location brief. Active Twale copy now attributes product specification through deployment to the owner as technical lead and sole engineer, for NDS through xDigital Solutions, 2025–present. Removed the old codename from tracked source and documentation. Homepage summary and detail status distinguish live backend/merchant web/ops, driver device testing, and user mobile app not started. No user-app delivery claim.
+
+Detailed sections explain dual MySQL users/databases and grant isolation, exclusive vault service access and audit logging, owner-reported DatabaseIsolationTest, controller response minimisation plus serializer defence, public tracking without PII, OTP-gated escrow release, Paystack callback verification and cron reconciliation due to the account’s occupied webhook slot, configurable commercial settings, current/history location storage and 90-day thinning, event-based Soketi broadcasts versus HTTP polling, visible staleness, and the native background-location requirement. Supplied stack rationale includes database queue/cache because hosting lacks Redis. These are owner-provided implementation claims; backend source/tests were not independently audited. Added simplified architecture with per-client status, stack rationale table, supplied live links, and selected merchant/admin screenshots. Existing redacted admin lead retained; duplicate/browser-chrome captures omitted. Driver app images have not yet been located; asked owner for filenames.
+
+Twale validation: lint, TypeScript via production build, and whitespace checks passed. Headless Chrome could not start (two startup timeouts), so the updated Twale visual/mobile browser checks remain unverified; do not claim those passed. Previous FoodBank browser checks concern its prior layout.
+
+
+## Twale public-copy correction — supersedes earlier status and disclosure
+
+Owner confirms BOTH user and driver mobile apps have been developed. Earlier not-started/device-testing statements are stale and must not be reintroduced. Removed Twale's detail-page tagline, metadata block, status badge, money-movement narrative, real-time/location narrative, central challenge, current stage, and detailed stack rationale. Privacy copy now uses plain language about role-appropriate access, privacy checks, and recipient tracking; no internal database/service/table/test names, grant model, payment-account constraints, or tracking internals in the active public copy. Architecture illustration now shows the connected applications at a product level. Homepage summary also reflects both developed apps. FoodBank content is separate and unchanged.
+
+Twale web previews now open the owner-requested https://app.twale.ng in a new tab: homepage/portfolio visual and merchant gallery images. Project titles/View project keep case-study navigation. Explicit full screenshot links remain available; admin images remain full-size screenshot links.
+
+## Twale mobile screenshots — located after re-upload
+
+Owner re-uploaded seven clearly named JPEGs: user app home/create-delivery/track/profile and driver app home/earnings/profile. Inspected all seven and added them below the web gallery in two labeled groups. `ProductMobileGallery.tsx` renders natural-aspect static imports with full-size image links; Twale uses a capped-width three/two/one-column layout. FoodBank uses the same component while retaining its compact two-screen layout. These screenshots do not establish public app-store availability or production usage metrics. Both apps remain described as developed, per the owner’s correction.

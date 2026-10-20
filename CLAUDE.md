@@ -33,7 +33,7 @@ Next.js App Router, TypeScript, Tailwind CSS v4. Server components by default. N
 
 Routes: `/`, `/work/[slug]`, generated sitemap, robots, Open Graph image, custom 404.
 
-Homepage: sticky navigation → hero with authentic portrait → factual project/organization strip → selected work → expertise → engineering philosophy → about and experience → contact → footer.
+Homepage: sticky navigation → portrait-led hero → selected projects → app shelf → merged engineering expertise and selected solutions → engineering philosophy → about/experience and running photo → contact → footer.
 
 Core files:
 - `lib/site.ts`: identity, availability, socials, project presentation/visual configuration, expertise, principles, experience, testimonials.
@@ -90,3 +90,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Latest owner-approved presentation
 
 Homepage features Twale, FoodBank CRM, and Albis Care in that order, with detail pages at `/work/<slug>`. Use `lib/platforms.ts` and `components/site/PlatformProjects.tsx` for active platform content. Legacy MDX is preserved as historical context and is not rendered. The full `/portfolio` page includes platforms, all websites, and an AI/automation placeholder. Keep the original image-left/text-right row design. Dashboard derivatives are in `public/work/platforms/`; private originals stay in git-ignored `private-assets/`. Screenshots begin static and scroll on hover/focus or explicit play; honor reduced motion. Missing screens and outcomes must remain labeled placeholders until supplied.
+
+The active merged engineering section is `EngineeringSection.tsx`, with four pillars and `engineeringTechnologies` in `lib/site.ts`, a full-stack discipline diagram, and evidence from `lib/automations.ts`. No standalone expertise/automation section should be reintroduced. Keep the technology list limited to confirmed tools; do not infer Flutter/PostgreSQL or a senior title from visual references.

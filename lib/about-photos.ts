@@ -1,0 +1,42 @@
+export const aboutPhotos = [
+    {
+        id: 'race',
+        title: 'Race day',
+        src: '/about/race-day.webp',
+        alt: 'Bolade smiling at a marathon event in an orange running vest and race bib.',
+        width: 1024,
+        height: 1536,
+    },
+    {
+        id: 'portrait',
+        title: 'Away from the run',
+        src: '/about/portrait.webp',
+        alt: 'Bolade taking a mirror portrait, wearing a dark outfit and cap.',
+        width: 1350,
+        height: 1800,
+    },
+    {
+        id: 'group',
+        title: 'Running together',
+        src: '/about/running-together.webp',
+        alt: 'Three runners in Run Lagos shirts standing together by the waterfront.',
+        width: 1800,
+        height: 1200,
+    },
+    {
+        id: 'medal',
+        title: 'Race medal',
+        src: '/about/race-medal.webp',
+        alt: 'Bolade holding up a race medal in front of a red and dark event backdrop.',
+        width: 1350,
+        height: 1800,
+    },
+    {
+        id: 'training',
+        title: 'A training run',
+        src: '/about/training-run.webp',
+        alt: 'Bolade outdoors in a white running shirt and dark shorts, holding a phone and earphones.',
+        width: 941,
+        height: 1672,
+    },
+];

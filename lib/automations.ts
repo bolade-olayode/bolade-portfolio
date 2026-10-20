@@ -60,9 +60,8 @@ export const automationProjects: AutomationProject[] = [
 ];
 
 export const customPlugins = {
-    count: 4,
     title: 'Custom WordPress plugins',
-    summary: 'Four PHP plugins built for individual client projects rather than the public WordPress plugin directory. These three examples cover a legal AI assistant, case filtering, and bank-transfer verification.',
+    summary: 'Custom PHP plugins built for individual client projects rather than the public WordPress plugin directory. Examples include a legal AI assistant, case filtering, and bank-transfer verification.',
     technologies: ['PHP', 'WordPress', 'Custom plugin development'],
 };
 
@@ -75,7 +74,7 @@ export type PluginProject = {
     repository?: { label: string; url: string };
 };
 
-// Briefs supplied by the owner. The fourth plugin remains undescribed.
+// Selected plugin briefs supplied by the owner.
 export const pluginProjects: PluginProject[] = [
     {
         slug: 'legal-ai-assistant',

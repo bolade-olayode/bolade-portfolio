@@ -13,7 +13,7 @@ Open http://localhost:3000. Production: `npm run build` then `npm start`.
 
 ## Featured platforms and portfolio
 
-The homepage features Twale, FoodBank CRM, and Albis Care in that order, followed by Aura by Nimi as a website project. `lib/platforms.ts` owns their summaries, screenshots, workflow notes, placeholders, and detail-page content. Platform rows link to `/work/<slug>`; Aura by Nimi links to its live store. The “View full portfolio” link leads to `/portfolio`, with platforms, all seven websites, and a clearly labeled AI/automation placeholder.
+The homepage features Twale, FoodBank CRM, and Albis Care in that order, followed by Aura by Nimi as a website project. `lib/platforms.ts` owns their summaries, screenshots, workflow notes, placeholders, and detail-page content. Platform rows link to `/work/<slug>`; Aura by Nimi links to its live store. The “View full portfolio” link leads to `/portfolio`, with platforms, the app shelf, websites, four automation projects, and custom WordPress plugin examples.
 
 Website names, overviews, images, and live URLs live in `lib/portfolio.ts`. Each preview uses a separate static `coverImage` where supplied, then reveals its long screenshot on image hover or keyboard focus. Leaving the preview restores the cover and resets scrolling. The “Play scrolling previews” checkbox also works on touch devices. Reduced-motion preferences stop animation. Website previews link directly to the live sites; platform previews link to detail pages.
 
@@ -27,10 +27,12 @@ Reviewed redacted dashboard derivatives live in `public/work/platforms/`. Unreda
 | Availability indicator | `lib/site.ts` → `site.available` (false until confirmed) |
 | Project names, categories, decision summaries, diagrams, optional live/repository links | `lib/site.ts` → `projects` |
 | App cards and optional App Store / Google Play URLs | `lib/site.ts` → `apps` |
+| Automation projects, homepage highlights, plugin examples | `lib/automations.ts` |
 | Expertise, philosophy, experience | `lib/site.ts` → respective arrays |
 | Approved recommendations | `lib/site.ts` → `testimonials`; empty means no section |
 | Featured platform metadata and detail-page copy | `lib/platforms.ts` |
 | Legacy case-study source material | `content/work/*.mdx` |
+| About photo selection, alt text, and full-size images | `lib/about-photos.ts` → `public/about/` |
 | Hero and about editorial copy | `app/page.tsx` |
 | Design tokens, responsive layouts, interaction styles | `app/globals.css` |
 | Portrait and résumé | `public/portrait.png`, `public/bolade-olayode-resume.pdf` |
@@ -41,13 +43,15 @@ To add a featured platform, add an entry to `platformProjects` in `lib/platforms
 
 Add approved, redacted screenshots under `public/work/platforms/`, then set the platform’s `screenshot`, `screenshotAlt`, and `screenshotCaption`. A missing screenshot renders a labeled placeholder. Describe only confirmed workflows, contributions, and outcomes. Mobile and additional product screens can be added to the detail-page gallery as they become available.
 
-The compact app shelf in `components/site/AppShelf.tsx` currently uses explicitly labeled placeholders. Set each app’s optional `icon` in `lib/site.ts` to an approved icon asset. Replace each entry in `apps` with the real name, description, and store URLs. Missing URLs display “Link pending” without a clickable destination.
+The compact app shelf in `components/site/AppShelf.tsx` uses real owner-supplied icons. Edit app names, status, and store URLs in `lib/site.ts`. Albis Care and FoodBank CRM link to Google Play; Meetpie is internal testing and Twale is coming soon.
 
 ### Publication gates
 
 Client clearance is still required before publication; Twale details require NDA review. The historical Albis incident narrative is not rendered by the active pages. If anonymizing, update titles, summaries, bodies, metadata, and visuals throughout. Confirm profile links and PDF contents. The deployed domain is configured in `site.url`; update it if needed before publishing.
 
-The homepage automation diagram is an illustrative concept in `components/site/AutomationFlow.tsx`, not a completed project. Replace its generic content with owner-supplied project and tool details when available.
+The merged homepage engineering section is `components/site/EngineeringSection.tsx`. Its four pillars and verified technology strip come from `lib/site.ts`; its selected solutions come from `lib/automations.ts`. The diagram shows engineering disciplines across projects, not one combined deployed system. It replaces the separate automation and expertise sections; `AutomationFlow.tsx` is retained as an unused reference. `AutomationPortfolio.tsx` renders four automation entries and documented examples of the owner’s custom WordPress plugins. The document pipeline’s 80% time reduction is owner-supplied. Only the publishing-stage source repository is linked for the two-part legal pipeline; do not imply the Python source was reviewed or included in that repository.
+
+The About photo stack is `components/site/AboutPhotoStack.tsx`. It uses five optimized WebP copies, preserving original uploads. Each image opens uncropped in a native dialog with previous/next controls, arrow keys, Escape-to-close, focus trapping/return, body scroll locking, and reduced-motion support. Edit the photo selection in `lib/about-photos.ts` and card positioning in `app/globals.css`.
 
 ## Design and checks
 
