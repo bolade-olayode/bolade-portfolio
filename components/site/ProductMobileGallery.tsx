@@ -6,7 +6,7 @@ type MobileScreen = NonNullable<PlatformProject['mobileScreens']>[number];
 
 export function ProductMobileGallery({ screens, heading = 'Two roles. One app.' }: { screens: MobileScreen[]; heading?: string }) {
     const groups = [...new Set(screens.map(screen => screen.group || ''))];
-    return <div className={`platform-mobile-screens${groups.some(Boolean) ? ' grouped-mobile-screens' : ''}`}>
+    return <div className={`platform-mobile-screens${(groups.some(Boolean) || screens.length > 2) ? ' grouped-mobile-screens' : ''}`}>
         <p className="eyebrow">MOBILE APPLICATIONS</p><h3>{heading}</h3>
         {groups.map(group => <div className="platform-mobile-group" key={group}>
             {group && <h4>{group}</h4>}

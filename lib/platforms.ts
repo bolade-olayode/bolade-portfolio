@@ -5,6 +5,7 @@ export type PlatformProject = {
     headline: string;
     hideDetailHeadline?: boolean;
     hideDetailMeta?: boolean;
+    hideDetailScope?: boolean;
     summary: string;
     role: string;
     scope: string;
@@ -102,13 +103,13 @@ export const platformProjects: PlatformProject[] = [
         pending: [],
         mobileHeading: 'The user and driver apps.',
         mobileScreens: [
-            { group: 'User app', src: '/user-app-home.jpeg', title: 'Delivery overview', alt: 'Twale user app home screen with delivery summaries and recent deliveries.', caption: 'Delivery statuses and recent activity from the user’s account.' },
-            { group: 'User app', src: '/user-app-create-delivery.jpeg', title: 'Create a delivery', alt: 'Twale user app recipient form in the create-delivery flow.', caption: 'Recipient and destination details as part of creating a delivery.' },
+            { group: 'User app', src: '/work/platforms/twale-mobile/user-app-home-redacted.webp', title: 'Delivery overview', alt: 'Twale user app home screen with delivery summaries and recent deliveries.', caption: 'Delivery statuses and recent activity. Names and delivery identifiers are redacted.' },
+            { group: 'User app', src: '/work/platforms/twale-mobile/user-app-create-delivery-redacted.webp', title: 'Create a delivery', alt: 'Twale user app recipient form in the create-delivery flow.', caption: 'Recipient and destination details as part of creating a delivery.' },
             { group: 'User app', src: '/user-app-track.jpeg', title: 'Track a delivery', alt: 'Twale user app tracking screen with delivery identifier search and QR scan control.', caption: 'Find a delivery by its identifier or scan its QR label.' },
-            { group: 'User app', src: '/user-profile-app.jpeg', title: 'Account and preferences', alt: 'Twale user app business profile with saved recipients and pickup settings.', caption: 'Profile information, saved recipients, pickup preferences, and support.' },
-            { group: 'Driver app', src: '/driver-app-home.jpeg', title: 'Availability and jobs', alt: 'Twale driver app home screen with availability controls and delivery jobs.', caption: 'Drivers manage availability and review their assigned work.' },
+            { group: 'User app', src: '/work/platforms/twale-mobile/user-profile-app-redacted.webp', title: 'Account and preferences', alt: 'Twale user app business profile with saved recipients and pickup settings.', caption: 'Profile settings and support, with account and contact details redacted.' },
+            { group: 'Driver app', src: '/work/platforms/twale-mobile/driver-app-home-redacted.webp', title: 'Availability and jobs', alt: 'Twale driver app home screen with availability controls and delivery jobs.', caption: 'Drivers manage availability and review their assigned work.' },
             { group: 'Driver app', src: '/driver-app-earnings.jpeg', title: 'Earnings', alt: 'Twale driver app earnings screen with wallet balance and cash-out control.', caption: 'A dedicated view of wallet earnings and withdrawals.' },
-            { group: 'Driver app', src: '/driver-app-profile.jpeg', title: 'Driver profile', alt: 'Twale driver app profile showing driver verification and vehicle information.', caption: 'Driver account details, verification status, and vehicle information.' },
+            { group: 'Driver app', src: '/work/platforms/twale-mobile/driver-app-profile-redacted.webp', title: 'Driver profile', alt: 'Twale driver app profile showing driver verification and vehicle information.', caption: 'Driver account details, verification status, and vehicle information.' },
         ],
         mobilePlaceholder: 'User and driver mobile app previews.',
     },
@@ -162,27 +163,50 @@ export const platformProjects: PlatformProject[] = [
         mobilePlaceholder: 'Mobile application screenshots will be added here.',
     },
     {
-        slug: 'albis-care', name: 'Albis Care', category: 'Healthcare · Web & mobile platform',
-        headline: 'Coordinating care across people, visits, and roles.',
-        summary: 'A care-management platform covering staff, care users, visits, and care logs. My work includes role-based access and a mobile companion alongside the web platform.',
-        role: 'Full-stack engineer', scope: 'Full-stack build · Role-based access · Mobile companion',
-        features: ['Care scheduling', 'Role-based access', 'Mobile companion'],
+        slug: 'albis-care', name: 'Albis Care', category: 'Healthcare · Care management platform',
+        headline: 'Care records, visits, and family updates in one place.',
+        summary: 'A care-management platform used daily by a UK home-care provider. As sole technical owner, I built the PHP backend, React Native app, and website integration, with access tailored to care staff, administrators, and families. As of August 2026, the platform supported approximately 15 staff and 60+ care clients.',
+        role: 'Full-stack engineer & sole technical owner', scope: 'Backend · Mobile app · Permissions · Website integration · Releases',
+        hideDetailScope: true,
+        features: ['Care records & visits', 'Role-based access', 'Family access', 'React Native app'],
         screenshot: '/work/platforms/albis-care-dashboard-redacted.png',
         coverImage: '/work/covers/albis-care-landing.webp',
         previewImage: '/work/previews/albiscare.webp',
         previewAlt: 'Albis Care website landing page.',
-        screenshotAlt: 'Albis Care administrator dashboard showing visit status, staff roles, and care-user summaries, with account emails and activity identifiers redacted.',
-        screenshotCaption: 'Administrator overview. Account emails and activity identifiers have been redacted; the image is an edited derivative.',
+        screenshotAlt: 'Albis Care administrator overview with account emails and activity identifiers redacted.',
+        screenshotCaption: 'Administrator overview. Identifying details have been redacted; this is an edited derivative.',
         imagePlaceholder: 'Albis Care dashboard preview',
-        overview: 'Albis Care supports the daily work around care users, staff, scheduled visits, and care logs. The administrator dashboard brings those records together, while role-based access determines what different users can see and do across the web platform and mobile companion.',
+        overview: 'Albis Care is used in daily production by a UK domiciliary care provider. Care staff manage visits and record care notes, the office coordinates clients and staff, and relatives can receive access to updates about their family member. The platform brings those responsibilities together while keeping access appropriate to each person’s role. As of August 2026, it supported approximately 15 staff and more than 60 care clients.',
+        contribution: 'I have been the sole engineer and technical owner since the project began in 2024. I built the PHP REST API and database, the React Native app, the access model, and the website enquiry integration. I also own mobile builds, Google Play releases, and ongoing maintenance.',
         workflows: [
-            { title: 'Visits and care records', description: 'Care users, visits, and care logs are managed through dedicated areas, with scheduled and completed activity visible in the overview.' },
-            { title: 'Staff roles', description: 'The dashboard distinguishes care managers, carers, drivers, and administrators, making staff responsibilities visible.' },
-            { title: 'Oversight and reporting', description: 'Visit summaries, activity history, analytics, and reports give the office team a view across the system.' },
+            { title: 'Care staff', description: 'Staff work with their assigned clients, visits, and care notes through the mobile app, keeping a record of the care they delivered.' },
+            { title: 'Office & care managers', description: 'The team coordinates care clients, staff, visits, and transport from role-specific dashboards.' },
+            { title: 'Families', description: 'Relatives can view the updates they have been granted for their family member. Access is specific to that client and can be changed or withdrawn.' },
         ],
-        decision: { title: 'Make access part of the system.', description: 'The permission model needs to remain consistent across the web platform and mobile companion. The detailed role mapping and current implementation will be added with the remaining screens.' },
-        pending: ['Current architecture and stack confirmation', 'Role-specific views and mobile screenshots', 'Confirmed outcomes and implementation details'],
-        mobilePlaceholder: 'Mobile companion screenshots will be added here.',
+        decision: { title: 'Match access to the work.', description: 'Care staff, administrators, and relatives have different responsibilities, so access is designed around those responsibilities.' },
+        narratives: [
+            { eyebrow: 'CARE RECORDS & ACCESS', title: 'Permissions that reflect how care is delivered.', intro: 'Running the organisation and recording care are different responsibilities. I built the access model around that distinction, with a separate approach for family updates.', items: [
+                { title: 'Keep care notes tied to the person delivering care.', description: 'Assigned care staff write the care notes for their work. Administrative seniority alone does not grant the ability to create those records, helping preserve clear authorship.' },
+                { title: 'Give families access to the right updates.', description: 'The family-access feature lets the team grant, adjust, or withdraw a relative’s access for an individual client. Families see the information shared with them, rather than receiving general access to care records.' },
+                { title: 'Keep permissions consistent behind the screens.', description: 'Role-specific dashboards make the app easier to use, while backend checks enforce access to records and actions. The interface reflects those permissions rather than being responsible for enforcing them.' },
+            ] },
+            { eyebrow: 'DELIVERY & MAINTENANCE', title: 'A platform the team can keep using.', intro: 'My work includes the parts beyond the screens: connecting enquiries, releasing the app, and maintaining it as the organisation’s needs change.', items: [
+                { title: 'Connect the website without mixing workflows.', description: 'Website enquiries feed into a separate marketing workflow, keeping new enquiries distinct from operational care records.' },
+                { title: 'Make mobile releases repeatable.', description: 'I resolved build and publishing issues and established an EAS Build workflow through GitHub Actions for Google Play releases.' },
+                { title: 'Work within the client’s existing setup.', description: 'The PHP backend uses the client’s existing hosting, while React Native and Expo support mobile development from one codebase. The choices keep infrastructure and maintenance manageable for a small care provider.' },
+            ] },
+        ],
+        technology: ['PHP REST API', 'MySQL / MariaDB', 'React Native', 'Expo', 'TypeScript', 'WordPress', 'Elementor', 'PHPMailer', 'EAS Build', 'GitHub Actions', 'Hostinger'],
+        links: [{ label: 'Albis Care website', url: 'https://albiscare.co.uk' }, { label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=uk.co.albiscare.app' }],
+        mobileHeading: 'Inside the mobile app.',
+        mobileScreens: [
+            { src: '/work/platforms/albis-mobile/login-redacted.webp', title: 'Sign-in', alt: 'Albis Care mobile sign-in screen with the email address redacted.', caption: 'The app’s sign-in screen, with the account email redacted.' },
+            { src: '/albiscare-admin-dashboard.webp', title: 'Administrator overview', alt: 'Albis Care mobile administrator dashboard showing staff and care management controls.', caption: 'Staff, client, and visit summaries with administrative controls. Screen totals are not reported usage figures.' },
+            { src: '/work/platforms/albis-mobile/driver-redacted.webp', title: 'Driver workspace', alt: 'Albis Care mobile driver dashboard with transport schedule and the driver’s name redacted.', caption: 'Assigned transport and history in a role-specific workspace, with the name redacted.' },
+        ],
+        pending: [],
+        mobilePlaceholder: 'Albis Care mobile screens.',
+
     },
 ];
 

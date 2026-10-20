@@ -3,7 +3,8 @@ export const site = {
     role: 'Full-stack software engineer', location: 'Lagos, Nigeria',
     url: 'https://boladeolayode.xyz', email: 'olayodebolade963@gmail.com',
     // Availability changes quickly. Enable only after confirming your current status.
-    available: false,
+    available: true,
+    availability: 'Open to full-time remote or hybrid roles',
     resume: '/bolade-olayode-resume.pdf',
     strava: 'https://strava.app.link/ttkKXZMSm7b',
     socials: [
@@ -24,7 +25,7 @@ export const projects: Record<string, {
     liveUrl?: string;
     githubUrl?: string;
 }> = {
-    'albis-care': { name: 'Albis Care', category: 'Healthcare · Web & mobile', headline: 'Permissions for care staff, admins, and families.', decision: 'A shared permission model across the web platform and mobile companion, rather than access checks scattered through individual screens.', scope: 'Full-stack engineering · Permissions · Mobile companion', nodes: ['Office & admin', 'Role-based access', 'Care teams & families'], tone: 'care' },
+    'albis-care': { name: 'Albis Care', category: 'Healthcare · Web & mobile', headline: 'Permissions for care staff, admins, and families.', decision: 'Role-appropriate access to care records and client-specific family updates, supported by a PHP backend and React Native app.', scope: 'PHP backend · React Native app · Permissions · Website integration', nodes: ['Office & admin', 'Role-based access', 'Care teams & families'], tone: 'care' },
     twale: { name: 'Twale', category: 'Logistics · Web & mobile platform', headline: 'Delivery management across web and mobile.', decision: 'A shared backend connects merchant and operations web applications with mobile apps for users and drivers.', scope: 'Backend architecture · Web applications · Mobile development', nodes: ['Merchants · Drivers · Operations', 'Shared backend · Access control', 'Web · User app · Driver app'], tone: 'logistics' },
     'foodbank-crm': { name: 'FoodBank CRM', category: 'Food distribution · Web & mobile platform', headline: 'Connecting food subscriptions, vendors, and orders.', decision: 'Built a shared Laravel API for web and mobile, with separate role permissions and server-verified payments.', scope: 'Backend architecture · Web application · Mobile development', nodes: ['Members · Vendors · Admin', 'Subscriptions & orders', 'Laravel · Next.js · React Native'], tone: 'foodbank' },
 };
@@ -43,7 +44,7 @@ export const engineeringTechnologies = [
 ];
 
 export const principles = [
-    { title: 'Understand before building.', text: 'I start with the people using the product, what they need to get done, and where the current workflow breaks down.' },
+    { title: 'Understand before building.', text: 'On Albis Care, recording care and managing the organisation needed different permissions. Understanding those responsibilities shaped the access model before I built the screens.' },
     { title: 'Choose an architecture that fits.', text: 'FoodBank taught me to question the underlying data model, not just compare feature lists. The architecture needs to fit the work it supports.' },
     { title: 'Plan for interruptions.', text: 'Twale’s drivers switch apps and lose signal. Background tracking and local storage for location points and supported actions account for those interruptions.' },
     { title: 'Follow through after launch.', text: 'Testing, deployment, maintenance, and feedback are part of the work. I stay involved in how the software runs and what needs to improve.' },
@@ -71,7 +72,7 @@ export const apps: {
     status?: 'Internal testing' | 'Coming soon';
     stores: { label: string; url?: string }[];
 }[] = [
-    { id: 'albis-care', name: 'Albis Care', description: 'Care-management mobile companion.', mark: 'AC', icon: '/albiscare-favicon.png', tone: 'app-icon-contained', stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=uk.co.albiscare.app&pcampaignid=web_share' }] },
+    { id: 'albis-care', name: 'Albis Care', description: 'Care-management app for staff, administrators, and families.', mark: 'AC', icon: '/albiscare-favicon.png', tone: 'app-icon-contained', stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=uk.co.albiscare.app&pcampaignid=web_share' }] },
     { id: 'foodbank-crm', name: 'FoodBank CRM', description: 'Mobile app for FoodBank CRM.', mark: 'FB', icon: '/foodbankcrm-icon.png', tone: 'app-icon-original', stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=foodbankcrm.app&pcampaignid=web_share' }] },
     { id: 'meetpie', name: 'Meetpie', description: 'Meetpie mobile app.', mark: 'M', icon: '/meetpie-favicon.png', tone: 'app-icon-original', status: 'Internal testing', stores: [] },
     { id: 'twale', name: 'Twale', description: 'Twale mobile applications.', mark: 'T', icon: '/twale-favicon.png', tone: 'app-icon-original', status: 'Coming soon', stores: [] },

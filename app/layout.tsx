@@ -11,12 +11,14 @@ export const metadata: Metadata = {
     metadataBase: new URL(site.url),
     title: { default: `${site.name} — Full-stack Software Engineer`, template: `%s — ${site.shortName}` },
     description,
+    authors: [{ name: site.name, url: site.url }],
+    robots: process.env.VERCEL_ENV === 'preview' ? { index: false, follow: false } : { index: true, follow: true },
     openGraph: { title: `${site.name} — Full-stack Software Engineer`, description, siteName: site.shortName, type: 'website', locale: 'en_US' },
     twitter: { card: 'summary_large_image', title: `${site.shortName} — Full-stack Software Engineer`, description },
 };
 export default function RootLayout({ children }: {
     children: React.ReactNode;
 }) {
-    const person = { '@context': 'https://schema.org', '@type': 'Person', name: site.name, url: site.url, jobTitle: site.role, email: site.email, sameAs: site.socials.map(s => s.href), image: `${site.url}/portrait.png` };
+    const person = { '@context': 'https://schema.org', '@type': 'Person', name: site.name, alternateName: ['Bolade Olayode', 'Bolade Olayode Emmanuel'], url: site.url, jobTitle: site.role, email: site.email, sameAs: site.socials.map(s => s.href), image: `${site.url}/portrait2.png` };
     return <html lang="en" className={`${archivo.variable} ${instrument.variable} ${mono.variable} ${garamond.variable}`}><body id="top"><a className="skip-link" href="#main-content">Skip to content</a><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person).replace(/</g, '\\u003c') }}/>{children}</body></html>;
 }

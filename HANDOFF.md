@@ -158,3 +158,43 @@ Twale web previews now open the owner-requested https://app.twale.ng in a new ta
 ## Twale mobile screenshots — located after re-upload
 
 Owner re-uploaded seven clearly named JPEGs: user app home/create-delivery/track/profile and driver app home/earnings/profile. Inspected all seven and added them below the web gallery in two labeled groups. `ProductMobileGallery.tsx` renders natural-aspect static imports with full-size image links; Twale uses a capped-width three/two/one-column layout. FoodBank uses the same component while retaining its compact two-screen layout. These screenshots do not establish public app-store availability or production usage metrics. Both apps remain described as developed, per the owner’s correction.
+
+
+## Twale mobile privacy redactions
+
+Owner requested names removed, especially user home/profile. Used built-in imagegen edits for five screenshots: user home/profile/create-delivery and driver home/profile. Opaque bars/circles cover names, business identity, profile email, avatar initials/photos, and visible delivery identifiers; create-delivery phone placeholder also covered. Inspected all outputs. These are edited derivatives, not pixel-identical screenshots. WebP versions are in public/work/platforms/twale-mobile/ and both static imports and full-size links now target them. The five originals were moved out of public into ignored private-assets/twale-mobile-originals/. Unaffected earnings/tracking screenshots remain original. Four-column user layout remains intact.
+
+Prompt set: precise-object-edit; redact identifying names, contacts, photos and identifiers with opaque coverage; preserve the full screenshot composition and unaffected UI; no added data, cropping, or phone frame. Built-in imagegen used, no API/CLI fallback.
+
+
+## Public image cleanup
+
+Moved 27 image files with no references in app/components/lib/content source into ignored private-assets/unused-public-images-2026-10-20/ (about 143 MiB). Includes superseded full website captures, original About photos now served as optimized derivatives, and duplicate/unused Twale web captures. Archive manifest records original public paths and byte sizes. All active static imports, gallery images, covers, app icons, résumé, and metadata portrait remain. Files were archived locally, not permanently deleted. Current branch remains portfolio-build; latest redaction and cleanup changes require a commit before pushing. Hosting production branch has not been verified; no push, merge, or deployment performed.
+
+
+## Albis Care — curated public narrative and mobile screenshots
+
+Replaced placeholders with the owner’s latest brief, keeping only public-relevant material: sole technical ownership since 2024, daily production use, care visits/notes, responsible authorship, role-appropriate access and client-specific family access, separate website-enquiry workflow, build/release ownership, and concise technology list. Backend is plain PHP REST API, NOT Laravel. Do not reintroduce incident details, exact permission matrix, internal schema/hook/field names, deployment commands, or implementation exceptions into public copy. No compliance certification, inspection outcome, offline support, retention improvement, or current usage metric was inferred. Historical MDX is not rendered and remains private repository context.
+
+Three mobile screens added: sign-in, admin overview, driver workspace. Built-in imagegen opaque redactions cover sign-in email and driver name; outputs visually inspected and converted to WebP under public/work/platforms/albis-mobile/. Two originals moved to ignored private-assets/albis-mobile-originals/. Admin screen contains no individual identifiers. Captions distinguish screenshot totals from usage claims. Prompt: precise-object-edit; cover only the identifying string with an opaque bar; preserve full composition and unaffected UI. These redacted screenshots are edited derivatives. Mobile gallery uses three columns on desktop, then two/one at responsive breakpoints.
+
+Legacy content/work/albis-care.mdx was also rewritten to match the curated public story, removing old incident claims and inaccurate WordPress permission framing. Previous version preserved only in ignored private-assets/legacy-case-studies/. This supersedes the historical-MDX note above; do not restore the old content.
+
+
+VA by Ella now uses the supplied full-page screenshot as its hover/focus scrolling image at public/work/previews/va-by-ella.webp, retaining the existing static cover and image-left/text-right design. Image and Visit website link open owner-supplied https://vabyella.com/ in a new tab. Removed staticOnly. Original PNG archived under ignored private-assets/website-originals/. Shared gallery controls and reduced-motion behavior retained.
+
+## Hiring-focused review improvements — owner approved
+
+Added permanent /about → /#about and /contact → /#contact redirects in next.config.ts after checking installed Next docs. Hero now leads with everyday business problems, shows owner-confirmed “Open to full-time remote or hybrid roles”, and gives résumé a secondary button alongside See my work. Get in touch and navigation Let’s talk lead to Contact, where mail links remain and CopyEmail provides clipboard success feedback or manual-copy guidance when unavailable/denied. site.available is now true by explicit owner instruction.
+
+Albis homepage/detail copy includes owner-supplied approximately 15 staff and 60+ care clients, explicitly dated August 2026. No Twale/FoodBank counts added; owner says wait for actionable details. Engineering section now leads “The work behind the claims”, presents concrete solutions before pillars/stack, and omits the decorative radial diagram. First philosophy item uses Albis care/admin responsibility example. At <=600px the header is a compact single row with all three destinations and the redundant Let’s talk CTA hidden. Photo expand controls moved to visible upper corners on all five stacked images.
+
+Portrait already had priority; production HTML confirms an image preload. Kept empty alt text on decorative app icons and duplicate scrolling images to avoid repetitive screen-reader descriptions.
+
+Validation: lint, webpack production build/TypeScript and whitespace checks passed. Headless Chrome /tmp/bolade-review-qa.mjs passed 1440/500/390/320 widths: no horizontal overflow, hiring actions present, compact mobile header/all links visible, all five expand icons unobscured. Copy-email success and rejected-clipboard feedback tested with browser stubs (not OS clipboard permissions), and both bare-path redirects reached their anchors. Production HTML/routes manifest independently checked for availability, dated figures, résumé button, image preload, removal of radial diagram, and 308 redirects. No deployment, commit, merge, or push performed.
+
+## Launch preparation, custom 404, SEO discussion
+
+Owner says ready for launch, confirms Vercel, intends to merge into main. Production Branch/domain mapping is still unverified; no commit/push/merge/deployment performed. The earlier preserve-coming-soon instruction is superseded by launch intent once the target is verified. Built a custom editorial 404 with decorative grid/large number, plain explanation, home/portfolio/contact recovery links, and noindex metadata. Added homepage canonical and Open Graph URL, author/alternate names in structured data, updated structured-data portrait to current hero, and preview-only noindex/nofollow via VERCEL_ENV. Sitemap/robots/project canonicals were already present. Production remains indexable. docs/launch-and-discovery.md records launch, Search Console, and analytics steps and current primary-source references. Analytics discussed, not installed: recommend Vercel page views/Speed Insights; Vercel custom events currently require Pro/Enterprise, so confirm plan before promising interaction events. No indexing/ranking guarantees.
+
+404/SEO validation: lint, webpack build/TypeScript, whitespace checks passed. Verified the unknown local URL returns HTTP 404. Built HTML confirms one canonical per public page, production pages indexable, and 404 noindex/recovery links. Headless Chrome timed out at startup on both attempts, so the new 404 visual/mobile browser QA remains pending; no browser pass claimed. No analytics scripts installed and no deployment performed.
