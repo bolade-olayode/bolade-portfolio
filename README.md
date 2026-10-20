@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bolade Olayode — engineering portfolio
 
-## Getting Started
+A responsive, server-rendered portfolio built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, and local MDX case studies. The current visual direction is ivory, charcoal, and cobalt, with editorial project stories and an authentic portrait.
 
-First, run the development server:
+## Run locally
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Production: `npm run build` then `npm start`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Featured platforms and portfolio
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The homepage features Twale, FoodBank CRM, and Albis Care in that order, followed by Aura by Nimi as a website project. `lib/platforms.ts` owns their summaries, screenshots, workflow notes, placeholders, and detail-page content. Platform rows link to `/work/<slug>`; Aura by Nimi links to its live store. The “View full portfolio” link leads to `/portfolio`, with platforms, the app shelf, websites, four automation projects, and custom WordPress plugin examples.
 
-## Learn More
+Website names, overviews, images, and live URLs live in `lib/portfolio.ts`. Each preview uses a separate static `coverImage` where supplied, then reveals its long screenshot on image hover or keyboard focus. Leaving the preview restores the cover and resets scrolling. The “Play scrolling previews” checkbox also works on touch devices. Reduced-motion preferences stop animation. Website previews link directly to the live sites; platform previews link to detail pages.
 
-To learn more about Next.js, take a look at the following resources:
+Reviewed redacted dashboard derivatives live in `public/work/platforms/`. Unredacted originals are preserved in git-ignored `private-assets/dashboard-originals/` and must stay outside `public`. FoodBank’s dashboard and additional mobile screens are labeled placeholders until supplied. The legacy MDX narratives remain historical sources; the active platform pages use `lib/platforms.ts` and exclude outdated incident details and unconfirmed metrics.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Edit content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Content | Location |
+| --- | --- |
+| Identity, email, socials, résumé, canonical domain | `lib/site.ts` → `site` |
+| Availability indicator | `lib/site.ts` → `site.available` (false until confirmed) |
+| Project names, categories, decision summaries, diagrams, optional live/repository links | `lib/site.ts` → `projects` |
+| App cards and optional App Store / Google Play URLs | `lib/site.ts` → `apps` |
+| Automation projects, homepage highlights, plugin examples | `lib/automations.ts` |
+| Expertise, philosophy, experience | `lib/site.ts` → respective arrays |
+| Approved recommendations | `lib/site.ts` → `testimonials`; empty means no section |
+| Featured platform metadata and detail-page copy | `lib/platforms.ts` |
+| Legacy case-study source material | `content/work/*.mdx` |
+| About photo selection, alt text, and full-size images | `lib/about-photos.ts` → `public/about/` |
+| Hero and about editorial copy | `app/page.tsx` |
+| Design tokens, responsive layouts, interaction styles | `app/globals.css` |
+| Portrait and résumé | `public/portrait.png`, `public/bolade-olayode-resume.pdf` |
 
-## Deploy on Vercel
+To add a featured platform, add an entry to `platformProjects` in `lib/platforms.ts`. Array order controls the homepage, portfolio, and next-project navigation. Add website-only projects to `portfolioSites` in `lib/portfolio.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Replace visual placeholders
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add approved, redacted screenshots under `public/work/platforms/`, then set the platform’s `screenshot`, `screenshotAlt`, and `screenshotCaption`. A missing screenshot renders a labeled placeholder. Describe only confirmed workflows, contributions, and outcomes. Mobile and additional product screens can be added to the detail-page gallery as they become available.
+
+The compact app shelf in `components/site/AppShelf.tsx` uses real owner-supplied icons. Edit app names, status, and store URLs in `lib/site.ts`. Albis Care and FoodBank CRM link to Google Play; Meetpie is internal testing and Twale is coming soon.
+
+### Publication gates
+
+Client clearance is still required before publication; Twale details require NDA review. The historical Albis incident narrative is not rendered by the active pages. If anonymizing, update titles, summaries, bodies, metadata, and visuals throughout. Confirm profile links and PDF contents. The deployed domain is configured in `site.url`; update it if needed before publishing.
+
+The merged homepage engineering section is `components/site/EngineeringSection.tsx`. Its four pillars and verified technology strip come from `lib/site.ts`; its selected solutions come from `lib/automations.ts`. The diagram shows engineering disciplines across projects, not one combined deployed system. It replaces the separate automation and expertise sections; `AutomationFlow.tsx` is retained as an unused reference. `AutomationPortfolio.tsx` renders four automation entries and documented examples of the owner’s custom WordPress plugins. The document pipeline’s 80% time reduction is owner-supplied. Only the publishing-stage source repository is linked for the two-part legal pipeline; do not imply the Python source was reviewed or included in that repository.
+
+The About photo stack is `components/site/AboutPhotoStack.tsx`. It uses five optimized WebP copies, preserving original uploads. Each image opens uncropped in a native dialog with previous/next controls, arrow keys, Escape-to-close, focus trapping/return, body scroll locking, and reduced-motion support. Edit the photo selection in `lib/about-photos.ts` and card positioning in `app/globals.css`.
+
+## Design and checks
+
+See `CLAUDE.md` for the current design system. The historical `portfolio-mockup.html` and old rail/archive/app components are retained as references; the live pages use `components/site/`.
+
+```sh
+npm run lint
+npx tsc --noEmit --incremental false
+npm run build
+```
+
+### Final release checklist
+
+- [ ] **Accessibility:** keyboard navigation, skip link, visible focus, screen-reader reading order, 200–400% zoom, 320px viewport, touch targets, and reduced-motion preference checked in a browser.
+- [ ] **Performance:** mobile Lighthouse on production; measure LCP, CLS, and INP. Target 95+ Lighthouse where achievable; scores have not been certified.
+- [ ] **Content:** client permissions, factual claims, portrait, résumé, links, current availability, and screenshots confirmed; TODOs resolved.
+- [ ] **Conversion:** email CTAs open the correct mailbox, résumé loads, social profiles resolve, project routes work, no dead-end product links.
+- [ ] **SEO:** deployed canonical domain, sitemap, robots, generated OG image, and structured data checked.
+
+No analytics, contact-form backend, new packages, or external hosting changes are introduced. Direct email handles enquiries.

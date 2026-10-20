@@ -1,0 +1,24 @@
+export type PortfolioSite = {
+    slug: string;
+    name: string;
+    image: string;
+    coverImage?: string;
+    staticOnly?: boolean;
+    description: string;
+    category: string;
+    headline: string;
+    features: string[];
+    url?: string;
+};
+
+// Live destinations supplied by the owner.
+export const portfolioSites: PortfolioSite[] = [
+    { slug: 'albis-care', category: 'Healthcare · Service website', headline: 'Helping families understand their care options.', features: ['Care services', 'Family enquiries', 'Contact information'], description: 'A website for a UK home-care provider, explaining personal, respite, dementia, and end-of-life care. Families can explore the support available and contact the team to discuss their needs.', name: 'Albis Care', image: '/work/previews/albiscare.webp', coverImage: '/work/covers/albis-care-landing.webp', url: 'https://albiscare.co.uk/' },
+    { slug: 'aura-by-nimi', category: 'Fashion · Online store', headline: 'Sleepwear, lingerie, and a place to shop.', features: ['Product collections', 'Shopping cart', 'Brand story'], description: 'An online store for Aura by Nimi, with collections for sleepwear, lingerie, ready-to-wear, and bridal pieces. Product listings bring photography, prices, and shopping options together with the brand’s story.', name: 'Aura by Nimi', image: '/work/previews/aurabynimi.webp', coverImage: '/work/covers/aura-by-nimi.webp', url: 'https://aurabynimi.com/' },
+    { slug: 'five-star-trucking', category: 'Logistics · Business website', headline: 'A home for freight and trucking services.', features: ['Freight services', 'Quote enquiries', 'Careers'], description: 'A website presenting Five Star’s freight brokerage, transportation, and truck repair services. Visitors can explore what the company offers, find career information, and request a quote.', name: 'Five Star Trucking', image: '/work/previews/fivestartrucking.webp', coverImage: '/work/covers/five-star-trucking.webp', url: 'https://spokanefivestar.com/' },
+    { slug: 'jv-sparkling', category: 'Cleaning · Service website', headline: 'From choosing a service to requesting an estimate.', features: ['Service listings', 'Estimate requests', 'Customer reviews'], description: 'A cleaning company website covering homes, commercial spaces, and short-term rentals. Service descriptions, customer reviews, and a step-by-step process help visitors decide what they need before requesting an estimate.', name: 'JV Sparkling', image: '/work/previews/jvsparkling.webp', coverImage: '/work/covers/jv-sparkling.webp', url: 'https://jvsparkling.com/' },
+    { slug: 'northwest-cdl', category: 'Education · Training website', headline: 'A starting point for a career in trucking.', features: ['Training programs', 'School information', 'Admissions enquiries'], description: 'A website for a CDL training school in Spokane, introducing its truck-driving programs and hands-on approach. Prospective students can learn about the school, explore training options, and contact admissions.', name: 'Northwest CDL', image: '/work/previews/northwestcdl.webp', coverImage: '/work/covers/northwest-cdl.webp', url: 'https://northwestcdl.com/' },
+    { slug: 'presbyterian-church', category: 'Community · Church website', headline: 'Keeping the congregation connected.', features: ['Sermons', 'Worship announcements', 'Outreach activities'], description: 'A website for the Presbyterian Church of Nigeria’s LEVI Outreach, bringing together sermons, worship announcements, church news, and photo galleries. It also shares the outreach’s evangelism plans and ways to get involved.', name: 'Presbyterian Church', image: '/work/previews/presbyterianchurch.webp', coverImage: '/work/covers/presbyterian-church.webp', url: 'https://pcnlevioutreach.ng/' },
+    { slug: 'tishow-beauty-spa', category: 'Beauty & wellness · Service website', headline: 'Treatments, appointments, and everything in between.', features: ['Treatment listings', 'Appointment enquiries', 'WhatsApp contact'], description: 'A website for a beauty spa in Ikate, Lekki, covering facials, massage, hair, grooming, and spa treatments. Visitors can browse services, see opening hours, and book an appointment or ask a question through WhatsApp.', name: 'Tishow Beauty Spa', image: '/work/previews/tishow-beauty-spa.webp', coverImage: '/work/covers/tishow-beauty-spa.webp', url: 'https://tishowbeautyspa.com/' },
+    { slug: 'va-by-ella', name: 'VA by Ella', category: 'Professional services · Agency website', headline: 'Virtual assistant services for growing businesses.', description: 'An agency website introducing virtual assistant services for entrepreneurs and small businesses, with service, portfolio, and about sections and a discovery-call invitation.', features: ['Agency introduction', 'Services', 'Discovery calls'], image: '/work/previews/va-by-ella.webp', coverImage: '/work/covers/va-by-ella.webp', url: 'https://vabyella.com/' },
+];
