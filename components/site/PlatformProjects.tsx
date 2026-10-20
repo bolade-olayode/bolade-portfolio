@@ -11,7 +11,7 @@ export function PlatformVisual({ project, full = false }: { project: PlatformPro
         return <div className={`platform-placeholder${full ? ' platform-placeholder-full' : ''}`}><span className="eyebrow">SCREENSHOT COMING SOON</span><p>{project.imagePlaceholder}</p></div>;
     }
     if (!full) return <ScrollPreview cover={project.screenshot} alt={project.screenshotAlt} />;
-    return <div className="platform-detail-screen"><Image src={previewImages[project.screenshot] || project.screenshot} alt={project.screenshotAlt} width={previewImages[project.screenshot]?.width || 1400} height={previewImages[project.screenshot]?.height || 1300} sizes="(max-width: 1300px) 100vw, 1200px" className="platform-full-image" /></div>;
+    return <div className="platform-detail-screen"><Image src={previewImages[project.screenshot] || project.screenshot} alt={project.screenshotAlt} placeholder={previewImages[project.screenshot] ? 'blur' : 'empty'} width={previewImages[project.screenshot]?.width || 1400} height={previewImages[project.screenshot]?.height || 1300} sizes="(max-width: 1300px) 100vw, 1200px" className="platform-full-image" /></div>;
 }
 
 export function PlatformProjects({ projects }: { projects: PlatformProject[] }) {

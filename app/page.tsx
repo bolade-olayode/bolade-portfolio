@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import heroPortrait from '@/public/portrait2.webp';
 import Link from 'next/link';
 import { Navigation, Contact, Footer, Arrow } from '@/components/site/Chrome';
 import { PlatformProjects } from '@/components/site/PlatformProjects';
@@ -15,7 +16,7 @@ export default function Home() {
     return <><Navigation /><main id="main-content" className="homepage">
     <section className="hero container" aria-labelledby="hero-title"><div className="hero-topline"><p className="eyebrow"><span className="accent-line"/> FULL-STACK SOFTWARE ENGINEER</p></div>
       <div className="hero-grid"><div className="hero-copy"><p className="hero-intro">Hi, I’m Bolade Olayode Emmanuel.</p><h1 id="hero-title">I build web applications for <em>everyday work.</em></h1><p className="hero-description">I help teams manage their work and solve everyday problems. I build the backend, web interfaces, and mobile apps that make that possible.</p>{site.available && <p className="hero-availability"><span aria-hidden="true" />{site.availability}</p>}<div className="hero-actions"><Link href="#work" className="button button-primary">See my work <span aria-hidden="true">↓</span></Link><a href={site.resume} className="button button-secondary">View résumé <Arrow /></a><Link href="#contact" className="text-link">Get in touch <Arrow /></Link></div></div>
-      <div className="hero-aside"><div className="portrait-frame"><Image src="/portrait2.png" alt="Olayode Bolade Emmanuel" width={520} height={650} priority sizes="(max-width: 600px) 70vw, (max-width: 800px) 36vw, 400px"/></div></div></div>
+      <div className="hero-aside"><div className="portrait-frame"><Image src={heroPortrait} placeholder="blur" alt="Olayode Bolade Emmanuel" width={520} height={650} priority sizes="(max-width: 600px) 70vw, (max-width: 800px) 36vw, 400px"/></div></div></div>
     </section>
     <section id="work" className="work-section section"><div className="container"><div className="section-heading"><div><p className="eyebrow">SELECTED WORK</p><h2>Selected projects.</h2></div><p>Three operational platforms and an online store.</p></div><PlatformProjects projects={platformProjects} /><WebsiteGallery sites={portfolioSites.filter(project => project.slug === 'aura-by-nimi')} id="featured-website" showControl={false} /><div className="portfolio-more"><p>More websites and projects I’ve worked on.</p><Link href="/portfolio" className="text-link">View full portfolio <Arrow /></Link></div></div></section>
     <AppShelf />
