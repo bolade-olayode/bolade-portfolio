@@ -45,13 +45,13 @@ export type PlatformProject = {
 };
 
 // Featured order is shared by the homepage, portfolio, and next-project links.
-// Current project copy deliberately excludes the older incident narratives and unconfirmed metrics.
+// Project details combine reviewed implementations with the owner’s current résumé.
 export const platformProjects: PlatformProject[] = [
     {
         slug: 'twale', name: 'Twale', category: 'Logistics · Web & mobile platform',
         headline: 'Delivery management across web and mobile.',
         hideDetailHeadline: true, hideDetailMeta: true,
-        summary: 'A logistics platform connecting merchants, drivers, and operations across Nigeria. I designed and built the backend, web applications, and mobile apps for users and drivers, taking the product from specification through deployment.',
+        summary: 'A multi-application logistics ecosystem tailored to Nigeria’s motor-park network. As sole architecture and engineering owner, I built administrative, web, customer, and driver platforms with separate codebases and shared workflows for parcel booking, shipment tracking, and multi-party settlements.',
         role: 'Technical lead & sole engineer', scope: 'Product specification · Architecture · Backend · Web & mobile · Deployment',
 
         features: ['Delivery management', 'Role-based access', 'User & driver apps', 'Operations console'],
@@ -63,7 +63,7 @@ export const platformProjects: PlatformProject[] = [
         screenshotCaption: 'Operations overview. Identifying records and financial values have been redacted; this is an edited derivative.',
         imagePlaceholder: 'Twale dashboard preview',
         overview: 'Twale connects merchants, drivers, and operations teams managing deliveries across Nigeria. Merchants create and follow deliveries, drivers manage their assignments, and operations oversees the work from a dedicated console. The platform includes web applications, a user mobile app, and a driver mobile app. Recipients can follow a delivery without creating an account.',
-        contribution: 'I led the project from product specification and system design through development and deployment. I built the shared backend, merchant and node-operator web application, operations console, and mobile apps for users and drivers. My work also covered integrations, hosting, release builds, and ongoing fixes across the platform.',
+        contribution: 'As sole architecture and engineering owner, I designed the end-to-end architecture, data models, backend, and application integrations, maintaining shared business workflows across separate codebases from specification through deployment. I built the shared backend, merchant and node-operator web application, operations console, and mobile apps for users and drivers. My work also covered integrations, hosting, release builds, and ongoing fixes across the platform.',
         journey: [
             { title: 'Create a delivery', description: 'A merchant adds the package and delivery details through the web or user mobile app.' },
             { title: 'Assign a driver', description: 'Operations coordinates the assignment, and the driver manages the delivery through the driver app.' },
@@ -126,7 +126,7 @@ export const platformProjects: PlatformProject[] = [
         screenshotCaption: 'The administrator overview brings members, vendors, orders, and subscriptions into one workspace. Screenshot totals are interface examples, not reported business outcomes.',
         imagePlaceholder: 'FoodBank CRM administrator overview',
         overview: 'FoodBank CRM is a production food distribution platform connecting community members, local vendors, and administrators across Nigeria. Members subscribe to food packages or buy directly from approved vendors. Vendors manage products, fulfil orders, and request withdrawals. Administrators oversee approvals, subscription plans, orders, financial operations, and support.',
-        contribution: 'I built the system end to end: a Laravel 12 REST API, a Next.js 16 web application, and a React Native mobile app using Expo 54. The web and mobile applications use the same authentication flows and API contracts. Behind those screens, I implemented role-based access, subscription and ordering rules, payment verification, vendor earnings, and queued notifications.',
+        contribution: 'I built the system end to end: a Laravel 12 REST API, a Next.js 16 web application, and a React Native mobile app using Expo 54. The web and mobile applications use the same authentication flows and API contracts. Behind those screens, I implemented role-based access, inventory, credits, subscriptions, redemptions, payment verification, vendor earnings, and queued notifications. I deployed the frontend and API in separate production environments.',
         workflows: [
             { title: 'For members', description: 'Register household and location details, choose a subscription tier, or browse products from approved vendors. Category filters help members find food, Paystack handles checkout, and order statuses show progress through to delivery.' },
             { title: 'For vendors', description: 'Submit business and bank details for administrator approval before receiving orders. Once approved, vendors manage product images, prices, stock, and units; fulfil orders through each status; and request withdrawals against their earnings ledger.' },

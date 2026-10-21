@@ -1,6 +1,6 @@
 export const site = {
     name: 'Olayode Bolade Emmanuel', shortName: 'Bolade Olayode', initials: 'bo',
-    role: 'Full-stack software engineer', location: 'Lagos, Nigeria',
+    role: 'Senior Full-Stack Engineer', location: 'Lagos, Nigeria',
     url: 'https://boladeolayode.xyz', email: 'olayodebolade963@gmail.com',
     // Availability changes quickly. Enable only after confirming your current status.
     available: true,
@@ -26,7 +26,7 @@ export const projects: Record<string, {
     githubUrl?: string;
 }> = {
     'albis-care': { name: 'Albis Care', category: 'Healthcare · Web & mobile', headline: 'Permissions for care staff, admins, and families.', decision: 'Role-appropriate access to care records and client-specific family updates, supported by a PHP backend and React Native app.', scope: 'PHP backend · React Native app · Permissions · Website integration', nodes: ['Office & admin', 'Role-based access', 'Care teams & families'], tone: 'care' },
-    twale: { name: 'Twale', category: 'Logistics · Web & mobile platform', headline: 'Delivery management across web and mobile.', decision: 'A shared backend connects merchant and operations web applications with mobile apps for users and drivers.', scope: 'Backend architecture · Web applications · Mobile development', nodes: ['Merchants · Drivers · Operations', 'Shared backend · Access control', 'Web · User app · Driver app'], tone: 'logistics' },
+    twale: { name: 'Twale', category: 'Logistics · Web & mobile platform', headline: 'Delivery management across web and mobile.', decision: 'As sole architecture and engineering owner, I connected administrative, web, customer, and driver applications through shared parcel-booking, tracking, and settlement workflows.', scope: 'Backend architecture · Web applications · Mobile development', nodes: ['Merchants · Drivers · Operations', 'Shared backend · Access control', 'Web · User app · Driver app'], tone: 'logistics' },
     'foodbank-crm': { name: 'FoodBank CRM', category: 'Food distribution · Web & mobile platform', headline: 'Connecting food subscriptions, vendors, and orders.', decision: 'Built a shared Laravel API for web and mobile, with separate role permissions and server-verified payments.', scope: 'Backend architecture · Web application · Mobile development', nodes: ['Members · Vendors · Admin', 'Subscriptions & orders', 'Laravel · Next.js · React Native'], tone: 'foodbank' },
 };
 export const expertise = [
@@ -36,11 +36,15 @@ export const expertise = [
     { title: 'AI & automation', detail: 'Document processing, rules-based workflows, Claude and OpenAI integrations, and knowledge-base retrieval.' },
 ];
 
-// Technologies demonstrated in the owner's project briefs and reviewed sources.
+// Technical skills supplied in the current résumé.
 export const engineeringTechnologies = [
-    'TypeScript', 'JavaScript', 'Python', 'PHP', 'React', 'Next.js',
-    'React Native / Expo', 'Node.js', 'Laravel', 'MySQL', 'Docker',
-    'WordPress', 'Google Apps Script', 'REST APIs', 'AI / LLM APIs',
+    'TypeScript', 'JavaScript', 'Python', 'PHP', 'SQL',
+    'React', 'Next.js', 'React Native / Expo', 'Vue.js', 'Angular', 'Tailwind CSS',
+    'Node.js', 'NestJS', 'Express', 'Laravel', 'Django',
+    'PostgreSQL', 'MySQL', 'MongoDB', 'Redis',
+    'AWS', 'Docker', 'GitHub Actions', 'CI/CD', 'Nginx', 'Linux',
+    'REST APIs', 'GraphQL', 'Microservices', 'Event-Driven Systems', 'System Design',
+    'Google Apps Script', 'PDF / DOCX pipelines', 'Third-party APIs', 'Payment integrations',
 ];
 
 export const principles = [
@@ -49,10 +53,17 @@ export const principles = [
     { title: 'Plan for interruptions.', text: 'Twale’s drivers switch apps and lose signal. Background tracking and local storage for location points and supported actions account for those interruptions.' },
     { title: 'Follow through after launch.', text: 'Testing, deployment, maintenance, and feedback are part of the work. I stay involved in how the software runs and what needs to improve.' },
 ];
+export const results = [
+    { value: '60+', label: 'Care clients supported', detail: 'Daily care management for 15 staff.', href: '/work/albis-care' },
+    { value: '₦3–5M', label: 'Monthly store revenue', detail: 'WooCommerce store processing ~30 orders a day.', href: '/#about' },
+    { value: '80%', label: 'Less manual processing', detail: 'Python legal-document pipeline.', href: '/portfolio#legal-document-pipeline' },
+];
+
 export const experience = [
-    { period: '2022 — present', title: 'Freelance full-stack engineer', org: 'Remote', detail: 'Business tools across healthcare, logistics, commerce, and SaaS.' },
-    { period: '2025', title: 'Full-stack developer / technical lead', org: 'Legal Digital NG', detail: 'Dashboards, membership and payment flows, and internal document automation.' },
-    { period: '2023 — 2024', title: 'UI/UX design intern', org: 'Vlay Media', detail: 'Interface design, prototypes, and development handoff.' },
+    { period: 'Apr 2026 — present', title: 'Senior Full Stack Engineer', org: 'Nexus Technologies · Remote', detail: 'Built a multi-tenant SaaS platform serving 10,000+ active users. Reduced API response times by 34% and mentored four engineers.' },
+    { period: 'Mar 2022 — present', title: 'Freelance Full-Stack Engineer', org: 'Upwork · Remote', detail: 'Build and maintain healthcare, commerce, and mobile applications. Own delivery from architecture and integrations through Google Play releases and production support.' },
+    { period: 'Jan 2026 — Aug 2026', title: 'Project Manager / Developer (Contract)', org: 'Chromite Solutions · Lagos / Hybrid', detail: 'Led freelance teams through scoping, code review, and delivery. Built a Nigerian classifieds marketplace and managed client communication.' },
+    { period: 'Mar 2025 — Jan 2026', title: 'Senior Web Developer', org: 'Legal Digital NG · Lagos / On-site', detail: 'Improved dashboards, memberships, and payments. Automated data entry and document handling, reducing repetitive work by 70%.' },
 ];
 // Add only recommendations supplied by their author and approved for publication.
 export const testimonials: {
@@ -69,11 +80,11 @@ export const apps: {
     mark: string;
     icon?: string;
     tone: string;
-    status?: 'Internal testing' | 'Coming soon';
+    status?: 'Internal testing' | 'Coming soon' | 'Shipped to Google Play';
     stores: { label: string; url?: string }[];
 }[] = [
     { id: 'albis-care', name: 'Albis Care', description: 'Care-management app for staff, administrators, and families.', mark: 'AC', icon: '/albiscare-favicon.png', tone: 'app-icon-contained', stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=uk.co.albiscare.app&pcampaignid=web_share' }] },
     { id: 'foodbank-crm', name: 'FoodBank CRM', description: 'Mobile app for FoodBank CRM.', mark: 'FB', icon: '/foodbankcrm-icon.png', tone: 'app-icon-original', stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=foodbankcrm.app&pcampaignid=web_share' }] },
-    { id: 'meetpie', name: 'Meetpie', description: 'Meetpie mobile app.', mark: 'M', icon: '/meetpie-favicon.png', tone: 'app-icon-original', status: 'Internal testing', stores: [] },
+    { id: 'meetpie', name: 'MeetPie', description: 'Dating app built with React Native, MongoDB, and Node.js; shipped to Google Play through GitHub Actions and EAS.', mark: 'M', icon: '/meetpie-favicon.png', tone: 'app-icon-original', status: 'Shipped to Google Play', stores: [] },
     { id: 'twale', name: 'Twale', description: 'Twale mobile applications.', mark: 'T', icon: '/twale-favicon.png', tone: 'app-icon-original', status: 'Coming soon', stores: [] },
 ];

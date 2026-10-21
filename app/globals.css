@@ -1816,7 +1816,7 @@ button,
 
 /* App icons on the left, an introduction on the right. */
 .app-shelf-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; align-items: center; }
-.app-shelf-copy > p:first-child { font-family: var(--font-garamond), Georgia, serif; font-size: 26px; line-height: 1.5; max-width: 480px; }
+.app-shelf-copy > p:first-child { font-family: var(--font-garamond), Georgia, serif; font-size: 20px; line-height: 1.6; max-width: 480px; }
 .app-shelf-copy > p + p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-top: 20px; max-width: 440px; }
 @media (max-width: 1100px) { .app-shelf-layout { gap: 40px; } }
 @media (max-width: 800px) { .app-shelf-layout { grid-template-columns: 1fr; gap: 36px; } }
@@ -2198,3 +2198,20 @@ button,
 .error-contact .text-link { display: inline-flex; }
 @media (max-width: 900px) { .error-page { gap: 36px; } .error-art { min-height: 340px; padding: 24px; } }
 @media (max-width: 600px) { .error-page { grid-template-columns: 1fr; gap: 34px; padding-block: 30px 48px; } .error-art { min-height: 0; padding: 24px; } .error-number { font-size: 140px; } .error-art svg { margin-block: 0; height: 40px; } .error-art-note { font-size: 19px; } }
+
+/* Results remain readable as a single column on narrow screens. */
+.results-section { padding-block: 8px 40px; }
+.results-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; border-top: 1px solid var(--rule); }
+.results-grid > div { display: flex; flex-direction: column; align-items: flex-start; padding: 26px 28px; border-right: 1px solid var(--rule); }
+.results-grid > div:first-child { padding-left: 0; }
+.results-grid > div:last-child { border-right: 0; }
+.results-grid dt { order: 1; font-size: 14px; font-weight: 600; margin-top: 8px; }
+.results-grid dd { margin: 0; }
+.results-grid dd a { font-family: var(--font-display), sans-serif; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.15; letter-spacing: -.04em; color: var(--accent); }
+.results-grid .result-detail { order: 2; margin-top: 8px; font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+@media (max-width: 600px) {
+  .results-section { padding-bottom: 24px; }
+  .results-grid { grid-template-columns: 1fr; }
+  .results-grid > div { padding: 20px 0; border-right: 0; border-bottom: 1px solid var(--rule); }
+  .results-grid > div:last-child { border-bottom: 0; }
+}
