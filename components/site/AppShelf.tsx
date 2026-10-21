@@ -14,6 +14,6 @@ export function AppShelf() {
                 <div className="app-shelf-stores">{app.status && <span className="app-status">{app.status}</span>}{app.stores.map(store => store.url ? <a key={store.label} href={store.url} target="_blank" rel="noopener noreferrer" aria-label={`${app.name} on ${store.label} (opens in a new tab)`}>{store.label} <Arrow /></a> : <span key={store.label}>{store.label} · Pending</span>)}</div>
             </li>;
         })}</ul></div>
-        <div className="app-shelf-copy"><p>I build standalone mobile apps and apps that connect to larger platforms—from customer-facing products to internal tools and driver and merchant apps. I focus on making them easy to use and dependable in everyday work.</p></div>
+        <div className="app-shelf-copy"><p>I build standalone mobile apps and apps that connect to larger platforms—from customer-facing products to internal tools and driver and merchant apps. I ship React Native apps to Google Play through GitHub Actions and EAS build pipelines, handling signing, versioning, and store compliance end to end.</p></div>
     </div></section>;
 }
