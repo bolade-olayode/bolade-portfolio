@@ -25,9 +25,33 @@ export const projects: Record<string, {
     liveUrl?: string;
     githubUrl?: string;
 }> = {
-    'albis-care': { name: 'Albis Care', category: 'Healthcare · Web & mobile', headline: 'Permissions for care staff, admins, and families.', decision: 'Role-appropriate access to care records and client-specific family updates, supported by a PHP backend and React Native app.', scope: 'PHP backend · React Native app · Permissions · Website integration', nodes: ['Office & admin', 'Role-based access', 'Care teams & families'], tone: 'care' },
-    twale: { name: 'Twale', category: 'Logistics · Web & mobile platform', headline: 'Delivery management across web and mobile.', decision: 'As sole architecture and engineering owner, I connected administrative, web, customer, and driver applications through shared parcel-booking, tracking, and settlement workflows.', scope: 'Backend architecture · Web applications · Mobile development', nodes: ['Merchants · Drivers · Operations', 'Shared backend · Access control', 'Web · User app · Driver app'], tone: 'logistics' },
-    'foodbank-crm': { name: 'FoodBank CRM', category: 'Food distribution · Web & mobile platform', headline: 'Connecting food subscriptions, vendors, and orders.', decision: 'Built a shared Laravel API for web and mobile, with separate role permissions and server-verified payments.', scope: 'Backend architecture · Web application · Mobile development', nodes: ['Members · Vendors · Admin', 'Subscriptions & orders', 'Laravel · Next.js · React Native'], tone: 'foodbank' },
+    'albis-care': 
+    { 
+        name: 'Albis Care', 
+        category: 'Healthcare · Web & mobile', 
+        headline: 'Permissions for care staff, admins, and families.', 
+        decision: 'Role-appropriate access to care records and client-specific family updates, supported by a PHP backend and React Native app.', 
+        scope: 'PHP backend · React Native app · Permissions · Website integration', 
+        nodes: ['Office & admin', 'Role-based access', 'Care teams & families'], 
+        tone: 'care' },
+    twale: 
+    { 
+        name: 'Twale', 
+        category: 'Logistics · Web & mobile platform', 
+        headline: 'Delivery management across web and mobile.', 
+        decision: 'As sole architecture and engineering owner, I connected administrative, web, customer, and driver applications through shared parcel-booking, tracking, and settlement workflows.', 
+        scope: 'Backend architecture · Web applications · Mobile development', 
+        nodes: ['Merchants · Drivers · Operations', 'Shared backend · Access control', 'Web · User app · Driver app'], 
+        tone: 'logistics' },
+    'foodbank-crm': 
+    { 
+        name: 'FoodBank CRM', 
+        category: 'Food distribution · Web & mobile platform', 
+        headline: 'Connecting food subscriptions, vendors, and orders.', 
+        decision: 'Built a shared Laravel API for web and mobile, with separate role permissions and server-verified payments.', 
+        scope: 'Backend architecture · Web application · Mobile development', 
+        nodes: ['Members · Vendors · Admin', 'Subscriptions & orders', 'Laravel · Next.js · React Native'], 
+        tone: 'foodbank' },
 };
 export const expertise = [
     { title: 'Full-stack engineering', detail: 'Interfaces, APIs, permissions, and payment flows connected into complete applications.' },
@@ -80,11 +104,46 @@ export const apps: {
     mark: string;
     icon?: string;
     tone: string;
-    status?: 'Internal testing' | 'Coming soon' | 'Shipped to Google Play';
+    status?: 'Internal testing' | 'Coming soon';
     stores: { label: string; url?: string }[];
 }[] = [
-    { id: 'albis-care', name: 'Albis Care', description: 'Care-management app for staff, administrators, and families.', mark: 'AC', icon: '/albiscare-favicon.png', tone: 'app-icon-contained', stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=uk.co.albiscare.app&pcampaignid=web_share' }] },
-    { id: 'foodbank-crm', name: 'FoodBank CRM', description: 'Mobile app for FoodBank CRM.', mark: 'FB', icon: '/foodbankcrm-icon.png', tone: 'app-icon-original', stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=foodbankcrm.app&pcampaignid=web_share' }] },
-    { id: 'meetpie', name: 'MeetPie', description: 'Dating app built with React Native, MongoDB, and Node.js; shipped to Google Play through GitHub Actions and EAS.', mark: 'M', icon: '/meetpie-favicon.png', tone: 'app-icon-original', status: 'Shipped to Google Play', stores: [] },
-    { id: 'twale', name: 'Twale', description: 'Twale mobile applications.', mark: 'T', icon: '/twale-favicon.png', tone: 'app-icon-original', status: 'Coming soon', stores: [] },
+    { id: 'albis-care', 
+        name: 'Albis Care', 
+        description: 'Care-management app for staff, administrators, and families.', 
+        mark: 'AC', 
+        icon: '/albiscare-favicon.png', 
+        tone: 'app-icon-contained', 
+        stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=uk.co.albiscare.app&pcampaignid=web_share' }] },
+    { id: 'foodbank-crm', 
+        name: 'FoodBank CRM', 
+        description: 'Mobile app for FoodBank CRM.', 
+        mark: 'FB', 
+        icon: '/foodbankcrm-icon.png', 
+        tone: 'app-icon-original', 
+        stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=foodbankcrm.app&pcampaignid=web_share' }] },
+  
+    { id: 'twale', 
+        name: 'Twale', 
+        description: 'Twale mobile applications.', 
+        mark: 'T', 
+        icon: '/twale-favicon.png', 
+        tone: 'app-icon-original', 
+        stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=app.twale.user&pcampaignid=web_share' }] },
+    { id: 'twale-driver', 
+        name: 'Twale Driver', 
+        description: 'Twale mobile applications.', 
+        mark: 'T', 
+        icon: '/twale-drive-favicon.png', 
+        tone: 'app-icon-original', 
+        stores: [{ label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=app.twale.driver&pcampaignid=web_share' }] },
+    { id: 'meetpie', 
+        name: 'MeetPie', 
+        description: 'Dating app built with React Native, MongoDB, and Node.js; shipped to Google Play through GitHub Actions and EAS.', 
+        mark: 'M', 
+        icon: '/meetpie-favicon.png', 
+        tone: 'app-icon-original', 
+        status: 'Coming soon', 
+        stores: [] },
+
+
 ];
